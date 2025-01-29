@@ -1,5 +1,7 @@
 * {
     margin: 0;
+    box-sizing: border-box;
+    padding: 0 ;
 
 }
 
@@ -9,6 +11,7 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
+    border: solid black 10px;
 }
 
 #player {
