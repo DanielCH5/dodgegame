@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+
+}
+
+#game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+#player {
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    position: absolute
+}
