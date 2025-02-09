@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,15 +8,22 @@
     <link rel="stylesheet" href="styles.css">
 
 </head>
+
 <body>
-
-<div id="game">
-
-    <div id="player">
-
+    <div id="scores">
+        <p id="score"></p>
+        <button id="startButton" onclick="gameStart()">Start</button>
+        <button id="stopButton" onclick="gameStop()">Stop</button>
     </div>
-</div>
+    <div id="game">
 
-<script src="movement.js"></script>
+        <div id="player">
+
+        </div>
+    </div>
+
+    <script src="movement.js"></script>
+    <script src="score.js"></script>
 </body>
+
 </html>
