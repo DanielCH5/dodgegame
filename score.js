@@ -38,7 +38,7 @@ const Game = {
         this.started = true;
         this.score =
             setInterval(() => {
-                this.highscore += 1;
+                this.highscore += 1000;
                 this.updateUI();
 
                 if (this.lives <= 0 ) {
