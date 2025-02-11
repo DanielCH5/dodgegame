@@ -11,14 +11,18 @@
 
 <body>
     <div id="scores">
-        <p id="score"></p>
-        <button id="startButton" onclick="gameStart()">Start</button>
-        <button id="stopButton" onclick="gameStop()">Stop</button>
+        <p id="score--value"></p>
+        <button id="startButton" onclick="Game.start()">Start</button>
+        <button id="stopButton" onclick="Game.end()">Stop</button>
     </div>
     <div id="game">
 
         <div id="player">
 
+        </div>
+
+        <div id="enemy">
+            
         </div>
     </div>
 

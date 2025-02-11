@@ -21,3 +21,11 @@
     position: absolute
 }
 
+#enemy{
+    width: 10px;
+    height: 10px;
+    background-color: pink;
+    position:absolute;
+
+}
+
