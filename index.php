@@ -17,17 +17,20 @@
     </div>
     <div id="game">
 
-        <div id="player">
+        <div id="game-container">
+            <div id="player">
 
+            </div>
+
+            <div id="enemy">
+
+            </div>
         </div>
 
-        <div id="enemy">
-            
-        </div>
+
     </div>
 
-    <script src="movement.js"></script>
-    <script src="score.js"></script>
+    <script src="game.js"></script>
 </body>
 
 </html>

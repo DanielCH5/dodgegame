@@ -13,17 +13,27 @@
     height: 100vh;
 
 }
+#game-container{
+    width: 100vw;
+    height: 500px;
+    border: solid black 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
 
 #player {
     width: 10px;
     height: 10px;
     background-color: black;
-    position: absolute
+    position: absolute;
 }
 
 #enemy{
     width: 10px;
     height: 10px;
+    left: 0;
     background-color: pink;
     position:absolute;
 
