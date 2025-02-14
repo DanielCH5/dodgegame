@@ -24,7 +24,7 @@ const Enemy = {
                 this.positionX += 50;
                 this.updatePosition();
                 if(this.positionX > 1100){
-                    this.positionX -= 1100;
+                    this.positionX -= 1200;
                 }
             }, 100);
         
@@ -56,9 +56,6 @@ const UI = {
     cells: document.querySelectorAll('.cell'),
 
 };
-
-
-const enemyMovement = { x: 0, y: 0 };
 
 const Game = {
     highscore: null,
