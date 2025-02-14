@@ -11,7 +11,39 @@
     
 }*/
 
+const Enemy = {
+    enemy: document.getElementById('enemy'),
+    positionX: 0,
+    positionY: 0,
+    started: null,
+    fjendeposition: null,
+    enemyMovementX() {
+        this.positionX = parseInt(window.getComputedStyle(this.enemy).left);
+        this.fjendeposition =
+            setInterval(() => {
+                this.positionX += 50;
+                this.updatePosition();
+                if(this.positionX > 1100){
+                    this.positionX -= 1100;
+                }
+            }, 100);
+        
 
+    },
+
+    updatePosition() {
+        this.enemy.style.left = this.positionX + 'px';
+        
+
+        
+    },
+    calculatePosition() {
+        return this.fjendeposition;
+    },
+
+
+
+}
 const UI = {
     timer: document.querySelector('.timer--value'),
     score: document.querySelector('#score--value'),
@@ -24,12 +56,7 @@ const UI = {
     cells: document.querySelectorAll('.cell'),
 
 };
-const enemy = document.getElementById("enemy");
 
-const enemyPosition = {
-    X: parseInt(window.getComputedStyle(enemy).left),
-    Y: parseInt(window.getComputedStyle(enemy).top),
-}
 
 const enemyMovement = { x: 0, y: 0 };
 
@@ -38,22 +65,16 @@ const Game = {
     score: 0,
     lives: 3,
     started: false,
-    fjendeposition: null,
+    
 
     updateUI() {
         UI.score.textContent = this.calculateScore().toString();
     },
-    updatePosition() {
-        let enemy = document.getElementById("enemy");
-        enemy.style.left = enemyPosition.X += 'px';
-    },
+    
     calculateScore() {
         return this.highscore;
     },
-    calculatePosition() {
-        return this.fjendeposition;
-    },
-
+    
     start() {
         this.started = true;
         this.score =
@@ -65,27 +86,19 @@ const Game = {
                     this.end();
                 }
             }, 1000);
-        this.enemyMovement();
+        Enemy.enemyMovementX();
     },
 
     end() {
         this.started = false;
         this.updateUI;
         clearInterval(this.score);
+        clearInterval(Enemy.fjendeposition);
 
 
     },
 
-    enemyMovement() {
-        this.fjendeposition =
-            setInterval(() => {
-                enemyPosition.X += 500;
-                this.updatePosition();
-
-            }, 1000);
-        
-
-    },
+    
 
 };
 
