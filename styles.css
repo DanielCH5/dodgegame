@@ -34,8 +34,9 @@
     width: 10px;
     height: 10px;
     left: 0;
-    background-color: pink;
+    background-color: purple;
     position:absolute;
+    transition: 2s;
 
 }
 

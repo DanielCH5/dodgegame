@@ -56,7 +56,6 @@ const Game = {
 
     start() {
         this.started = true;
-
         this.score =
             setInterval(() => {
                 this.highscore += 1000;
@@ -78,15 +77,15 @@ const Game = {
     },
 
     enemyMovement() {
-        if (this.started = true) {
+        this.fjendeposition =
             setInterval(() => {
-                enemyPosition.X += 100;
+                enemyPosition.X += 500;
                 this.updatePosition();
 
             }, 1000);
-        }
+        
 
-    }
+    },
 
 };
 
