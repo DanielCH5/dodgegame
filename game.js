@@ -17,8 +17,9 @@ const Enemy = {
     positionY: 0,
     started: null,
     fjendeposition: null,
+    movement: { x: 10, y: 0 },
     enemyMovementX() {
-        this.positionX = parseInt(window.getComputedStyle(this.enemy).left);
+        /*this.positionX = parseInt(window.getComputedStyle(this.enemy).left);
         this.fjendeposition =
             setInterval(() => {
                 this.positionX += 50;
@@ -26,16 +27,27 @@ const Enemy = {
                 if(this.positionX > 1100){
                     this.positionX -= 1200;
                 }
-            }, 100);
-        
+            }, 100);*/
+
 
     },
+    move() {
 
+        if (Game.started) {
+
+
+            this.positionX += this.movement.x;
+            this.positionY += this.movement.y;
+            if (this.positionX > window.screen.width) {
+                this.movement.x = -10;
+            }
+            if (this.positionX < 0) {
+                this.movement.x = 10;
+            }
+        }
+    },
     updatePosition() {
         this.enemy.style.left = this.positionX + 'px';
-        
-
-        
     },
     calculatePosition() {
         return this.fjendeposition;
@@ -43,7 +55,8 @@ const Enemy = {
 
 
 
-}
+};
+
 const UI = {
     timer: document.querySelector('.timer--value'),
     score: document.querySelector('#score--value'),
@@ -62,16 +75,14 @@ const Game = {
     score: 0,
     lives: 3,
     started: false,
-    
-
     updateUI() {
         UI.score.textContent = this.calculateScore().toString();
     },
-    
+
     calculateScore() {
         return this.highscore;
     },
-    
+
     start() {
         this.started = true;
         this.score =
@@ -94,9 +105,6 @@ const Game = {
 
 
     },
-
-    
-
 };
 
 //Player constant
@@ -143,6 +151,8 @@ window.addEventListener("keyup", function (event) {
 const gameLoop = function () {
     positionPlayer.x += movement.x;
     positionPlayer.y += movement.y;
+    Enemy.move();
+    Enemy.updatePosition();
 
     player.style.left = positionPlayer.x + 'px';
     player.style.top = positionPlayer.y + 'px';
