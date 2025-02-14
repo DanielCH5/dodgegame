@@ -17,7 +17,7 @@ $json = file_get_contents('php://input');
 $data = json_decode($json, true);
 
 // Validate json format.
-if (!$data || !isset($data['player'], $data['score'])) {
+if (!$data || !isset($data['player1'], $data['score1'])) {
     http_response_code(400);
     echo json_encode([
         'status' => 'error',
@@ -27,8 +27,8 @@ if (!$data || !isset($data['player'], $data['score'])) {
 }
 
 // Validate player name.
-$player = trim($data['player']);
-if (empty($player) || strlen($player) < 2 || strlen($player) > 50) {
+$player1 = trim($data['player1']);
+if (empty($player1) || strlen($player1) < 2 || strlen($player1) > 50) {
     http_response_code(400);
     echo json_encode([
         'status' => 'error',
@@ -37,9 +37,9 @@ if (empty($player) || strlen($player) < 2 || strlen($player) > 50) {
     exit;
 }
 
-// Validate score.
-$score = (int) $data['score'];
-if ($score <= 0) {
+// Validate score1.
+$score1 = (int) $data['score1'];
+if ($score1 <= 0) {
     http_response_code(400);
     echo json_encode([
         'status' => 'error',
@@ -49,10 +49,10 @@ if ($score <= 0) {
 }
 
 // Send score to highscore api.
-$url = 'https://highscores.martindilling.com/api/v1/games/12/highscores';
+$url = 'https://highscores.martindilling.com/api/v1/games/41/highscores';
 $payload = [
-    'player' => $player,
-    'score' => $score,
+    'player' => $player1,
+    'score' => $score1,
 ];
 $response = apiPost($url, $payload);
 
