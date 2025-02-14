@@ -57,6 +57,7 @@ const Enemy = {
 
 };
 
+
 const UI = {
     timer: document.querySelector('.timer--value'),
     score: document.querySelector('#score--value'),
