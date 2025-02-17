@@ -12,25 +12,10 @@
 }*/
 
 const Enemy = {
-    enemy: document.getElementById('enemy'),
+    enemy: document.querySelector('.enemy'),
     positionX: 0,
     positionY: 0,
-    started: null,
-    fjendeposition: null,
     movement: { x: 10, y: 0 },
-    enemyMovementX() {
-        /*this.positionX = parseInt(window.getComputedStyle(this.enemy).left);
-        this.fjendeposition =
-            setInterval(() => {
-                this.positionX += 50;
-                this.updatePosition();
-                if(this.positionX > 1100){
-                    this.positionX -= 1200;
-                }
-            }, 100);*/
-
-
-    },
     move() {
 
         if (Game.started) {
@@ -48,9 +33,6 @@ const Enemy = {
     },
     updatePosition() {
         this.enemy.style.left = this.positionX + 'px';
-    },
-    calculatePosition() {
-        return this.fjendeposition;
     },
 
 
@@ -95,14 +77,12 @@ const Game = {
                     this.end();
                 }
             }, 1000);
-        Enemy.enemyMovementX();
     },
 
     end() {
         this.started = false;
         this.updateUI;
         clearInterval(this.score);
-        clearInterval(Enemy.fjendeposition);
 
 
     },

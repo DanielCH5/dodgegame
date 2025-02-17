@@ -30,7 +30,7 @@
 
             </div>
 
-            <div id="enemy">
+            <div class="enemy">
 
             </div>
         </div>
