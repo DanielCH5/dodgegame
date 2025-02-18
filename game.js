@@ -101,16 +101,16 @@ let movement = { x: 0, y: 0 };
 //Event listener der lytter til hvornår W,A,S,D er trykket ned og retter sig efter det ift. top position og left position i HTML
 window.addEventListener("keydown", function (event) {
     if (event.key === "w" || event.key === "W") {
-        movement.y = -1;
+        movement.y = -3;
     }
     if (event.key === "a" || event.key === "A") {
-        movement.x = -1;
+        movement.x = -3;
     }
     if (event.key === "s" || event.key === "S") {
-        movement.y = 1;
+        movement.y = 3;
     }
     if (event.key === "d" || event.key === "D") {
-        movement.x = 1;
+        movement.x = 3;
     }
 });
 window.addEventListener("keyup", function (event) {
