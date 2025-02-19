@@ -38,6 +38,64 @@ const Enemy = {
 
 
 };
+const Player = {
+    player: document.getElementById("player"),
+    positionX: parseInt(window.getComputedStyle(this.player).left),
+    positionY: parseInt(window.getComputedStyle(this.player).top),
+    movement: { x: 0, y: 0 },
+
+    //Event listener der lytter til hvornår W,A,S,D er trykket ned og retter sig efter det ift. top position og left position i HTML
+
+    move() {
+
+
+
+        this.positionX += this.movement.x;
+        this.positionY += this.movement.y;
+        window.addEventListener("keydown", function (event) {
+            if (event.key === "w" || event.key === "W") {
+                Player.movement.y = -3;
+            }
+            if (event.key === "a" || event.key === "A") {
+                Player.movement.x = -3;
+            }
+            if (event.key === "s" || event.key === "S") {
+                Player.movement.y = 3;
+            }
+            if (event.key === "d" || event.key === "D") {
+                Player.movement.x = 3;
+            }
+        });
+
+    },
+
+    stopMove() {
+        window.addEventListener("keyup", function (event) {
+            if (event.key === "w" || event.key === "W") {
+                Player.movement.y = 0;
+            }
+            if (event.key === "a" || event.key === "A") {
+                Player.movement.x = 0;
+            }
+            if (event.key === "s" || event.key === "S") {
+                Player.movement.y = 0;
+            }
+            if (event.key === "d" || event.key === "D") {
+                Player.movement.x = 0;
+            }
+        });
+    },
+    updatePosition() {
+        this.player.style.left = this.positionX + 'px';
+        this.player.style.top = this.positionY + 'px';
+    },
+
+
+
+
+}
+
+
 
 
 const UI = {
@@ -89,57 +147,20 @@ const Game = {
 };
 
 //Player constant
-const player = document.getElementById("player");
 const gameContainer = document.getElementById("game-container");
-let positionPlayer = {
-    x: parseInt(window.getComputedStyle(player).left),
-    y: parseInt(window.getComputedStyle(player).top),
-};
 
-let movement = { x: 0, y: 0 };
 
-//Event listener der lytter til hvornår W,A,S,D er trykket ned og retter sig efter det ift. top position og left position i HTML
-window.addEventListener("keydown", function (event) {
-    if (event.key === "w" || event.key === "W") {
-        movement.y = -3;
-    }
-    if (event.key === "a" || event.key === "A") {
-        movement.x = -3;
-    }
-    if (event.key === "s" || event.key === "S") {
-        movement.y = 3;
-    }
-    if (event.key === "d" || event.key === "D") {
-        movement.x = 3;
-    }
-});
-window.addEventListener("keyup", function (event) {
-    if (event.key === "w" || event.key === "W") {
-        movement.y = 0;
-    }
-    if (event.key === "a" || event.key === "A") {
-        movement.x = 0;
-    }
-    if (event.key === "s" || event.key === "S") {
-        movement.y = 0;
-    }
-    if (event.key === "d" || event.key === "D") {
-        movement.x = 0;
-    }
-});
+
+
+
 
 
 const gameLoop = function () {
-    positionPlayer.x += movement.x;
-    positionPlayer.y += movement.y;
+    Player.move();
+    Player.stopMove();
+    Player.updatePosition();
     Enemy.move();
     Enemy.updatePosition();
-
-    player.style.left = positionPlayer.x + 'px';
-    player.style.top = positionPlayer.y + 'px';
-
-
-
     window.requestAnimationFrame(gameLoop);
 }
 window.requestAnimationFrame(gameLoop);
