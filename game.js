@@ -52,20 +52,23 @@ const Player = {
 
         this.positionX += this.movement.x;
         this.positionY += this.movement.y;
-        window.addEventListener("keydown", function (event) {
-            if (event.key === "w" || event.key === "W") {
-                Player.movement.y = -3;
-            }
-            if (event.key === "a" || event.key === "A") {
-                Player.movement.x = -3;
-            }
-            if (event.key === "s" || event.key === "S") {
-                Player.movement.y = 3;
-            }
-            if (event.key === "d" || event.key === "D") {
-                Player.movement.x = 3;
-            }
-        });
+
+        if (Game.started === true) {
+            window.addEventListener("keydown", function (event) {
+                if (event.key === "w" || event.key === "W") {
+                    Player.movement.y = -3;
+                }
+                if (event.key === "a" || event.key === "A") {
+                    Player.movement.x = -3;
+                }
+                if (event.key === "s" || event.key === "S") {
+                    Player.movement.y = 3;
+                }
+                if (event.key === "d" || event.key === "D") {
+                    Player.movement.x = 3;
+                }
+            });
+        } 
 
     },
 
