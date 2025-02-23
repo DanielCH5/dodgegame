@@ -1,19 +1,21 @@
 const Enemy = {
     enemy: document.querySelector('.enemy'),
-    positionX: 0,
+    positionX: 500,
     positionY: 0,
     movement: { x: 10, y: 0 },
     move() {
 
         if (Game.started) {
 
+            Enemy.enemy.style.display = 'block';
+
 
             this.positionX += this.movement.x;
             this.positionY += this.movement.y;
-            if (this.positionX > window.screen.width) {
+            if (this.positionX >= 1390) {
                 this.movement.x = -10;
             }
-            if (this.positionX < 0) {
+            if (this.positionX <= 500) {
                 this.movement.x = 10;
             }
         }
@@ -44,22 +46,21 @@ const Player = {
 
             window.addEventListener("keydown", function (event) {
                 if (event.key === "w" || event.key === "W") {
-                    if(Player.positionY > 210){
+                    if(Player.positionY >= 200){
                         Player.movement.y = -3;
                     }else{
                         Player.movement.y = 0;
                     }
-                    
                 }
                 if (event.key === "a" || event.key === "A") {
-                    if(Player.positionX > 510){
+                    if(Player.positionX >= 500){
                         Player.movement.x = -3;
                     } else{
-                        Player.movement.y = 0;
+                        Player.movement.x = 0;
                     }
                 }
                 if (event.key === "s" || event.key === "S") {
-                    if(Player.positionY < 690){
+                    if(Player.positionY <= 690){
                         Player.movement.y = 3;
                     } else{
                         Player.movement.y = 0;
@@ -67,7 +68,7 @@ const Player = {
                     
                 }
                 if (event.key === "d" || event.key === "D") {
-                    if(Player.positionX < 1390){
+                    if(Player.positionX <= 1390){
                         Player.movement.x = 3;
                     } else{
                         Player.movement.x = 0;

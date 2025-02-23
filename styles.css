@@ -35,8 +35,8 @@
 .enemy{
     width: 10px;
     height: 10px;
-    left: 0;
     background-color: purple;
     position:absolute;
+    display: none;
 }
 
