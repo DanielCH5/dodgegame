@@ -1,16 +1,3 @@
-//Tager fat i score
-
-
-/*function gameStart(){
-    let start = Date.now();
-
-    setInterval(function(){
-        document.getElementById("score").innerHTML = Date.now() - start;
-
-    }, 1000);  
-    
-}*/
-
 const Enemy = {
     enemy: document.querySelector('.enemy'),
     positionX: 0,
@@ -149,13 +136,7 @@ const Game = {
     },
 };
 
-//Player constant
 const gameContainer = document.getElementById("game-container");
-
-
-
-
-
 
 
 const gameLoop = function () {
