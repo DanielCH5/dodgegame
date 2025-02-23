@@ -14,15 +14,15 @@
         <p id="score--value"></p>
         <button id="startButton" onclick="Game.start()">Start</button>
         <button id="stopButton" onclick="Game.end()">Stop</button>
-        
-    </div>
-
-    <div class="container">
+        <div class="container">
         <div data-player1 class="player1"></div>
         <div data-score1 class="score1"></div>
         <button data-send-button class="send-button">Send</button>
         <pre data-response-preview class="response-preview"></pre>
     </div>
+    </div>
+
+    
     <div id="game">
 
         <div id="game-container">

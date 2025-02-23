@@ -41,18 +41,38 @@ const Player = {
         this.positionY += this.movement.y;
 
         if (Game.started === true) {
+
             window.addEventListener("keydown", function (event) {
                 if (event.key === "w" || event.key === "W") {
-                    Player.movement.y = -3;
+                    if(Player.positionY > 210){
+                        Player.movement.y = -3;
+                    }else{
+                        Player.movement.y = 0;
+                    }
+                    
                 }
                 if (event.key === "a" || event.key === "A") {
-                    Player.movement.x = -3;
+                    if(Player.positionX > 510){
+                        Player.movement.x = -3;
+                    } else{
+                        Player.movement.y = 0;
+                    }
                 }
                 if (event.key === "s" || event.key === "S") {
-                    Player.movement.y = 3;
+                    if(Player.positionY < 690){
+                        Player.movement.y = 3;
+                    } else{
+                        Player.movement.y = 0;
+                    }
+                    
                 }
                 if (event.key === "d" || event.key === "D") {
-                    Player.movement.x = 3;
+                    if(Player.positionX < 1390){
+                        Player.movement.x = 3;
+                    } else{
+                        Player.movement.x = 0;
+                    }
+                    
                 }
             });
         } 
