@@ -17,11 +17,12 @@
 }*/
 const Enemy = {
     enemy: document.querySelector('.enemy'),
-    positionX: 500,
-    positionY: 295,
+    positionX: 250,
+    positionY: Math.floor(Math.random() * (501 - 100) + 100), //Finder en random int fra 100-500 (floor er brugt for at finde en int og ikke en float)
     movement: { x: 10, y: 0 },
     width: 10,
     height: 10,
+
     move() {
 
         if (Game.started) {
@@ -41,7 +42,9 @@ const Enemy = {
     },
     updatePosition() {
         this.enemy.style.left = this.positionX + 'px';
+        this.enemy.style.top = this.positionY + 'px';
     },
+
 
 
 
@@ -67,37 +70,37 @@ const Player = {
 
             window.addEventListener("keydown", function (event) {
                 if (event.key === "w" || event.key === "W") {
-                    if(Player.positionY >= 200){
+                    if (Player.positionY >= 100) {
                         Player.movement.y = -3;
-                    }else{
+                    } else {
                         Player.movement.y = 0;
                     }
                 }
                 if (event.key === "a" || event.key === "A") {
-                    if(Player.positionX >= 500){
+                    if (Player.positionX >= 250) {
                         Player.movement.x = -3;
-                    } else{
+                    } else {
                         Player.movement.x = 0;
                     }
                 }
                 if (event.key === "s" || event.key === "S") {
-                    if(Player.positionY <= 690){
+                    if (Player.positionY <= 490) {
                         Player.movement.y = 3;
-                    } else{
+                    } else {
                         Player.movement.y = 0;
                     }
-                    
+
                 }
                 if (event.key === "d" || event.key === "D") {
-                    if(Player.positionX <= 1390){
+                    if (Player.positionX <= 1040) {
                         Player.movement.x = 3;
-                    } else{
+                    } else {
                         Player.movement.x = 0;
                     }
-                    
+
                 }
             });
-        } 
+        }
 
     },
 
@@ -122,7 +125,7 @@ const Player = {
         this.player.style.top = this.positionY + 'px';
     },
 
-    
+
 
 
 
@@ -156,7 +159,7 @@ const Game = {
         UI.lives.textContent = this.calculateLives().toString();
     },
 
-    calculateLives(){
+    calculateLives() {
         return this.lives;
     },
 
@@ -184,13 +187,13 @@ const Game = {
 
 
     },
-    detectCollision(){
-        if(
+    detectCollision() {
+        if (
             Player.positionX + Player.width >= Enemy.positionX &&
             Player.positionX <= Enemy.positionX + Enemy.width &&
             Player.positionY + Player.height >= Enemy.positionY &&
             Player.positionY <= Enemy.positionY + Enemy.height
-        ){
+        ) {
             Game.lives--;
         }
     }
