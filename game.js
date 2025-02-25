@@ -31,10 +31,10 @@ const Enemy = {
 
             this.positionX += this.movement.x;
             this.positionY += this.movement.y;
-            if (this.positionX >= 1390) {
+            if (this.positionX >= 1040) {
                 this.movement.x = -10;
             }
-            if (this.positionX <= 500) {
+            if (this.positionX <= 250) {
                 this.movement.x = 10;
             }
         }
