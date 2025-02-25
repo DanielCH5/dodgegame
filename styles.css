@@ -15,9 +15,9 @@
     height: 100px;
 }
 #game-container{
-    width: 900px;
-    height: 500px;
-    margin: 100px 500px;
+    width: 800px;
+    height: 400px;
+    margin: 0px 250px;
     border: solid black 1px;
     display: flex;
     justify-content: center;

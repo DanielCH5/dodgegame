@@ -1,8 +1,27 @@
+/*class Car {
+    constructor(brand, price) {
+            this.brand = brand;
+            this.color = ["Red", "Blue", "Green"];
+            this.price = price;
+            this.currency = 'BTC';
+            this.rate = 685140.06;
+    }
+
+    getPriceInDKK() {
+        const price = this.price;
+        const rate = this.rate;
+        const priceInDkk = price * rate;
+
+        return priceInDkk + ' DKK';
+    }
+}*/
 const Enemy = {
     enemy: document.querySelector('.enemy'),
     positionX: 500,
-    positionY: 0,
+    positionY: 295,
     movement: { x: 10, y: 0 },
+    width: 10,
+    height: 10,
     move() {
 
         if (Game.started) {
@@ -32,6 +51,8 @@ const Player = {
     positionX: parseInt(window.getComputedStyle(this.player).left),
     positionY: parseInt(window.getComputedStyle(this.player).top),
     movement: { x: 0, y: 0 },
+    width: 10,
+    height: 10,
 
     //Event listener der lytter til hvornår W,A,S,D er trykket ned og retter sig efter det ift. top position og left position i HTML
 
@@ -101,6 +122,8 @@ const Player = {
         this.player.style.top = this.positionY + 'px';
     },
 
+    
+
 
 
 
@@ -155,6 +178,16 @@ const Game = {
 
 
     },
+    detectCollision(){
+        if(
+            Player.positionX + Player.width >= Enemy.positionX &&
+            Player.positionX <= Enemy.positionX + Enemy.width &&
+            Player.positionY + Player.height >= Enemy.positionY &&
+            Player.positionY <= Enemy.positionY + Enemy.height
+        ){
+            console.log('collision');
+        }
+    }
 };
 
 const gameContainer = document.getElementById("game-container");
@@ -166,6 +199,7 @@ const gameLoop = function () {
     Player.updatePosition();
     Enemy.move();
     Enemy.updatePosition();
+    Game.detectCollision();
     window.requestAnimationFrame(gameLoop);
 }
 window.requestAnimationFrame(gameLoop);
