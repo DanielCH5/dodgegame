@@ -135,6 +135,7 @@ const Player = {
 const UI = {
     timer: document.querySelector('.timer--value'),
     score: document.querySelector('#score--value'),
+    lives: document.querySelector('#lives'),
     gameOverOverlay: document.querySelector('.game-over-overlay'),
     gameOverScore: document.querySelector('.game-over-score'),
     nameInput: document.querySelector('.submit-name-input'),
@@ -152,6 +153,11 @@ const Game = {
     started: false,
     updateUI() {
         UI.score.textContent = this.calculateScore().toString();
+        UI.lives.textContent = this.calculateLives().toString();
+    },
+
+    calculateLives(){
+        return this.lives;
     },
 
     calculateScore() {
@@ -185,7 +191,7 @@ const Game = {
             Player.positionY + Player.height >= Enemy.positionY &&
             Player.positionY <= Enemy.positionY + Enemy.height
         ){
-            console.log('collision');
+            Game.lives--;
         }
     }
 };

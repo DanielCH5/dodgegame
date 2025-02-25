@@ -12,6 +12,7 @@
 <body>
     <div id="scores">
         <p id="score--value"></p>
+        <p id="lives"></p>
         <button id="startButton" onclick="Game.start()">Start</button>
         <button id="stopButton" onclick="Game.end()">Stop</button>
         <div class="container">
