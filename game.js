@@ -107,15 +107,13 @@ const Player = {
     movement: { x: 0, y: 0 },
     width: 10,
     height: 10,
-
     move() {
         this.positionX += this.movement.x;
         this.positionY += this.movement.y;
-
         if (Game.started) {
             window.addEventListener("keydown", function (event) {
                 if (event.key === "w" || event.key === "W") {
-                    Player.movement.y = Player.positionY > 100 ? -3 : 0;
+                    Player.movement.y = Player.positionY > 103 ? -3 : 0;
                 }
                 if (event.key === "a" || event.key === "A") {
                     Player.movement.x = Player.positionX > 250 ? -3 : 0;
@@ -137,6 +135,12 @@ const Player = {
                 Player.movement.y = 0;
             }
         });
+        if(Player.positionX === 250 || Player.positionX === 1040 ){
+            Player.movement.x = 0;
+        }
+        if(Player.positionY === 100 || Player.positionY === 490 ){
+            Player.movement.y = 0;
+        }
     },
 
     updatePosition() {
@@ -196,11 +200,8 @@ const gameLoop = function () {
     Player.move();
     Player.stopMove();
     Player.updatePosition();
-
     enemies.forEach((enemy) => enemy.move());
-
     Game.detectCollision();
-
     window.requestAnimationFrame(gameLoop);
 };
 
