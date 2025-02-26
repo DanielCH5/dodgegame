@@ -113,7 +113,7 @@ const Player = {
         if (Game.started) {
             window.addEventListener("keydown", function (event) {
                 if (event.key === "w" || event.key === "W") {
-                    Player.movement.y = Player.positionY > 103 ? -3 : 0;
+                    Player.movement.y = Player.positionY > 100 ? -3 : 0;
                 }
                 if (event.key === "a" || event.key === "A") {
                     Player.movement.x = Player.positionX > 250 ? -3 : 0;
