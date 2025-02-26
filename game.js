@@ -5,7 +5,7 @@ class Enemy {
         document.body.appendChild(this.enemy);
         this.positionX = 250;
         this.positionY = this.getRandomInt(100, 500);
-        this.movement = { x: this.getRandomInt(3,10), y: this.calculateMovement() }; // Random speed between 1 and 10
+        this.movement = { x: this.getRandomInt(3, 10), y: this.calculateMovement() }; // Random speed between 1 and 10
         this.width = 10;
         this.height = 10;
         this.updatePosition();
@@ -17,75 +17,53 @@ class Enemy {
 
 
 
-    //Random til at finde ud af om at de skal spawne fra højre eller venstre
-    calculateX(){
-        const n = this.getRandomInt(1,2);
+    //Random til at finde ud af om at de skal spawne fra højre eller venstre (bliver ikke brugt lige nu)
+    calculateX() {
+        const n = this.getRandomInt(1, 2);
         if (n === 1) {
             this.positionX = 250;
             return this.positionX;
-            
+
         } else {
             this.positionX = 1040;
             return this.positionX;
         }
     }
 
-    calculateMovement(){
+    calculateMovement() {
         const n = this.positionY;
-        if(n >= 300){
-           return -this.getRandomInt(0,5);
-        } else{
-            return this.getRandomInt(0,5);
+        if (n >= 300) {
+            return -this.getRandomInt(0, 5);
+        } else {
+            return this.getRandomInt(0, 5);
         }
     }
 
-    /*move() {
+    move() {
         if (Game.started) {
             this.enemy.style.display = 'block';
             this.positionX += this.movement.x;
             this.positionY += this.movement.y;
 
-            if (this.positionX >= 1040) {
-                this.movement.x = -this.getRandomInt(1, 10);
-            }
-            if (this.positionX <= 250) {
-                this.movement.x = this.getRandomInt(1, 10);
-            }
-            if (this.positionY >= 500) {
-                this.movement.y = -this.getRandomInt(1, 10);
-            }
-            if (this.positionY <= 100) {
-                this.movement.y = this.getRandomInt(1, 10);
+            if (this.positionX >= 1050 || this.positionX <= 249 || this.positionY >= 500 || this.positionY <= 99) {
+                this.removeEnemy();
+                return;
             }
 
             this.updatePosition();
         }
-    }*/
-        move() {
-            if (Game.started) {
-                this.enemy.style.display = 'block';
-                this.positionX += this.movement.x;
-                this.positionY += this.movement.y;
-        
-                if (this.positionX >= 1050 || this.positionX <= 249 || this.positionY >= 500 || this.positionY <= 99) {
-                    this.removeEnemy();
-                    return; 
-                }
-        
-                this.updatePosition();
-            }
+    }
+
+    // Method to remove enemy from DOM
+    removeEnemy() {
+        this.enemy.remove(); // Remove from the DOM
+        const index = enemies.indexOf(this);
+        if (index > -1) {
+            enemies.splice(index, 1); // Remove from the array
         }
-        
-        // Method to remove enemy from DOM
-        removeEnemy() {
-            this.enemy.remove(); // Remove from the DOM
-            const index = enemies.indexOf(this);
-            if (index > -1) {
-                enemies.splice(index, 1); // Remove from the array
-            }
-            enemies.push(new Enemy());
-        }
-        
+        enemies.push(new Enemy());
+    }
+
 
     updatePosition() {
         this.enemy.style.position = 'absolute';
@@ -135,10 +113,10 @@ const Player = {
                 Player.movement.y = 0;
             }
         });
-        if(Player.positionX === 250 || Player.positionX === 1040 ){
+        if (Player.positionX === 250 || Player.positionX === 1040) {
             Player.movement.x = 0;
         }
-        if(Player.positionY === 100 || Player.positionY === 490 ){
+        if (Player.positionY === 100 || Player.positionY === 490) {
             Player.movement.y = 0;
         }
     },
@@ -159,7 +137,6 @@ const Game = {
     score: 0,
     lives: 3,
     started: false,
-
     updateUI() {
         UI.score.textContent = this.highscore.toString();
         UI.lives.textContent = this.lives.toString();
