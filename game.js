@@ -3,10 +3,10 @@ class Enemy {
         this.enemy = document.createElement('div');
         this.enemy.classList.add('enemy');
         document.body.appendChild(this.enemy);
-
-        this.positionX = 250;
+        this.positionValue = this.getRandomInt(1, 2);
+        this.positionX = this.calculateX();
         this.positionY = this.getRandomInt(100, 500);
-        this.movement = { x: this.getRandomInt(1, 10), y: this.getRandomInt(1,10) }; // Random speed between 1 and 10
+        this.movement = { x: this.getRandomInt(1, 10), y: this.getRandomInt(1, 10) }; // Random speed between 1 and 10
         this.width = 10;
         this.height = 10;
 
@@ -17,6 +17,19 @@ class Enemy {
         return Math.floor(Math.random() * (max - min + 1)) + min; // Inclusive min and max
     }
 
+    //Random til at finde ud af om at de skal spawne fra højre eller venstre
+    calculateX(){
+        const n = this.getRandomInt(1,2);
+        if (n === 1) {
+            this.positionX = 250;
+            return this.positionX;
+            
+        } else {
+            this.positionX = 1050;
+            return this.positionX;
+        }
+    }
+
     move() {
         if (Game.started) {
             this.enemy.style.display = 'block';
@@ -24,13 +37,13 @@ class Enemy {
             this.positionY += this.movement.y;
 
             if (this.positionX >= 1040) {
-                this.movement.x = -this.getRandomInt(1, 10); // Random speed when changing direction
+                this.movement.x = -this.getRandomInt(1, 10);
             }
             if (this.positionX <= 250) {
                 this.movement.x = this.getRandomInt(1, 10);
             }
             if (this.positionY >= 500) {
-                this.movement.y = -this.getRandomInt(1, 10); // Random speed when changing direction
+                this.movement.y = -this.getRandomInt(1, 10);
             }
             if (this.positionY <= 100) {
                 this.movement.y = this.getRandomInt(1, 10);
@@ -138,14 +151,13 @@ const Game = {
                 Game.lives--;
                 Game.updateUI();
                 if (this.lives <= 0) {
-                this.end();
-            }
+                    this.end();
+                }
             }
         });
     },
 };
 
-// **Game Loop**
 const gameLoop = function () {
     Player.move();
     Player.stopMove();
@@ -158,5 +170,4 @@ const gameLoop = function () {
     window.requestAnimationFrame(gameLoop);
 };
 
-// **Start the game loop**
 window.requestAnimationFrame(gameLoop);
