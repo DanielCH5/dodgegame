@@ -3,9 +3,9 @@ class Enemy {
         this.enemy = document.createElement('div');
         this.enemy.classList.add('enemy');
         document.body.appendChild(this.enemy);
-        this.positionX = this.calculateX();
+        this.positionX = 250;
         this.positionY = this.getRandomInt(100, 500);
-        this.movement = { x: this.getRandomInt(1, 10), y: this.getRandomInt(1, 10) }; // Random speed between 1 and 10
+        this.movement = { x: this.getRandomInt(3,10), y: this.calculateMovement() }; // Random speed between 1 and 10
         this.width = 10;
         this.height = 10;
         this.updatePosition();
@@ -15,6 +15,8 @@ class Enemy {
         return Math.floor(Math.random() * (max - min + 1)) + min; // Inclusive min and max
     }
 
+
+
     //Random til at finde ud af om at de skal spawne fra højre eller venstre
     calculateX(){
         const n = this.getRandomInt(1,2);
@@ -23,12 +25,21 @@ class Enemy {
             return this.positionX;
             
         } else {
-            this.positionX = 1050;
+            this.positionX = 1040;
             return this.positionX;
         }
     }
 
-    move() {
+    calculateMovement(){
+        const n = this.positionY;
+        if(n >= 300){
+           return -this.getRandomInt(0,5);
+        } else{
+            return this.getRandomInt(0,5);
+        }
+    }
+
+    /*move() {
         if (Game.started) {
             this.enemy.style.display = 'block';
             this.positionX += this.movement.x;
@@ -49,7 +60,32 @@ class Enemy {
 
             this.updatePosition();
         }
-    }
+    }*/
+        move() {
+            if (Game.started) {
+                this.enemy.style.display = 'block';
+                this.positionX += this.movement.x;
+                this.positionY += this.movement.y;
+        
+                if (this.positionX >= 1050 || this.positionX <= 249 || this.positionY >= 500 || this.positionY <= 99) {
+                    this.removeEnemy();
+                    return; 
+                }
+        
+                this.updatePosition();
+            }
+        }
+        
+        // Method to remove enemy from DOM
+        removeEnemy() {
+            this.enemy.remove(); // Remove from the DOM
+            const index = enemies.indexOf(this);
+            if (index > -1) {
+                enemies.splice(index, 1); // Remove from the array
+            }
+            enemies.push(new Enemy());
+        }
+        
 
     updatePosition() {
         this.enemy.style.position = 'absolute';
