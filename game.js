@@ -3,13 +3,11 @@ class Enemy {
         this.enemy = document.createElement('div');
         this.enemy.classList.add('enemy');
         document.body.appendChild(this.enemy);
-        this.positionValue = this.getRandomInt(1, 2);
         this.positionX = this.calculateX();
         this.positionY = this.getRandomInt(100, 500);
         this.movement = { x: this.getRandomInt(1, 10), y: this.getRandomInt(1, 10) }; // Random speed between 1 and 10
         this.width = 10;
         this.height = 10;
-
         this.updatePosition();
     }
 
