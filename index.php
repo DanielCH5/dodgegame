@@ -15,15 +15,15 @@
         <p id="lives"></p>
         <button id="startButton" onclick="Game.start()">Start</button>
         <button id="stopButton" onclick="Game.end()">Stop</button>
-        <div class="container">
-        <div data-player1 class="player1"></div>
-        <div data-score1 class="score1"></div>
-        <button data-send-button class="send-button">Send</button>
-        <pre data-response-preview class="response-preview"></pre>
-    </div>
+        <!--<div class="container">
+            <div data-player1 class="player1"></div>
+            <div data-score1 class="score1"></div>
+            <button data-send-button class="send-button">Send</button>
+            <pre data-response-preview class="response-preview"></pre>
+        </div>-->
     </div>
 
-    
+
     <div id="game">
 
         <div id="game-container">
@@ -43,7 +43,7 @@
         const scoreElement = document.querySelector('[data-score1]');
         const sendButton = document.querySelector('[data-send-button]');
         const responsePreviewElement = document.querySelector('[data-response-preview]');
-        
+
         function generatePirateName() {
             const firstNames = ["Blackbeard", "Salty", "One-Eyed", "Mad", "Captain", "Peg-Leg", "Red", "Stormy", "Jolly", "Barnacle"];
             const lastNames = ["McScurvy", "Silverhook", "Rumbelly", "Seadog", "Plankwalker", "Bones", "Squidbeard", "Driftwood", "Sharkbait", "Bootstraps"];
