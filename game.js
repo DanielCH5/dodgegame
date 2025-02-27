@@ -88,6 +88,12 @@ const Player = {
     move() {
         this.positionX += this.movement.x;
         this.positionY += this.movement.y;
+        //Sørger for at spilleren ikke kan bevæge sig out of bounds
+        if (this.positionX < 250) this.positionX = 250;
+        if (this.positionX > 1040) this.positionX = 1040;
+        if (this.positionY < 100) this.positionY = 100;
+        if (this.positionY > 490) this.positionY = 490;
+
         if (Game.started) {
             window.addEventListener("keydown", function (event) {
                 if (event.key === "w" || event.key === "W") {
@@ -113,12 +119,6 @@ const Player = {
                 Player.movement.y = 0;
             }
         });
-        if (Player.positionX === 250 || Player.positionX === 1040) {
-            Player.movement.x = 0;
-        }
-        if (Player.positionY === 100 || Player.positionY === 490) {
-            Player.movement.y = 0;
-        }
     },
 
     updatePosition() {
