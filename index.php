@@ -14,7 +14,6 @@
         <p id="score--value"></p>
         <p id="lives"></p>
         <button id="startButton" onclick="Game.start()">Start</button>
-        <button id="stopButton" onclick="Game.end()">Stop</button>
         <!--<div class="container">
             <div data-player1 class="player1"></div>
             <div data-score1 class="score1"></div>
