@@ -17,17 +17,20 @@ a{
     color: white;
 
 }
-#menu{
-    display: grid;
-    font-family: PressStart2P;
-    border: solid 5px black;
-    border-radius: 30px;
-}
 #title{
     color: white;
     justify-self: center;
     padding-top: 28px;
     -webkit-text-stroke: 0.5px black;
+}
+#menu{
+    background-image: linear-gradient(#8A00FF, #b700ff, #da00ff);
+    width: 800px;
+    height: 400px;
+    display: grid;
+    font-family: PressStart2P;
+    border: solid 5px black;
+    border-radius: 30px;
 }
 #menu-buttons{
     display: grid;
@@ -50,6 +53,9 @@ a{
 
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
 
 }
 #scores{
@@ -67,12 +73,7 @@ a{
 
 }
 
-#menu{
-    background-image: linear-gradient(#8A00FF, #b700ff, #da00ff);
-    width: 800px;
-    height: 400px;
-    margin: 0px 250px;
-}
+
 
 #player {
     width: 10px;
