@@ -1,3 +1,33 @@
+const activeKeys = {};
+window.addEventListener("keydown", function (event) {
+    if (Game.started) {
+        activeKeys[event.key.toLowerCase()] = true; // Track pressed keys
+        updateMovement();
+    }
+});
+window.addEventListener("keyup", function (event) {
+    delete activeKeys[event.key.toLowerCase()]; // Remove key from tracking
+    updateMovement();
+});
+function updateMovement() {
+    Player.movement.x = 0;
+    Player.movement.y = 0;
+
+    if (activeKeys["w"]) {
+        Player.movement.y = Player.positionY > 100 ? -3 : 0;
+    }
+    if (activeKeys["s"]) {
+        Player.movement.y = Player.positionY < 490 ? 3 : 0;
+    }
+    if (activeKeys["a"]) {
+        Player.movement.x = Player.positionX > 250 ? -3 : 0;
+    }
+    if (activeKeys["d"]) {
+        Player.movement.x = Player.positionX < 1040 ? 3 : 0;
+    }
+}
+
+
 class Enemy {
     constructor() {
         this.enemy = document.createElement('div');
@@ -45,7 +75,7 @@ class Enemy {
             this.positionX += this.movement.x;
             this.positionY += this.movement.y;
 
-            if (this.positionX >= 1050 || this.positionX <= 249 || this.positionY >= 500 || this.positionY <= 99) {
+            if (this.positionX >= 1040 || this.positionX <= 250 || this.positionY >= 490 || this.positionY <= 100) {
                 this.removeEnemy();
                 return;
             }
@@ -93,33 +123,9 @@ const Player = {
         if (this.positionX > 1040) this.positionX = 1040;
         if (this.positionY < 100) this.positionY = 100;
         if (this.positionY > 490) this.positionY = 490;
-
-        if (Game.started) {
-            window.addEventListener("keydown", function (event) {
-                if (event.key === "w" || event.key === "W") {
-                    Player.movement.y = Player.positionY > 100 ? -3 : 0;
-                }
-                if (event.key === "a" || event.key === "A") {
-                    Player.movement.x = Player.positionX > 250 ? -3 : 0;
-                }
-                if (event.key === "s" || event.key === "S") {
-                    Player.movement.y = Player.positionY < 490 ? 3 : 0;
-                }
-                if (event.key === "d" || event.key === "D") {
-                    Player.movement.x = Player.positionX < 1040 ? 3 : 0;
-                }
-            });
-        }
     },
 
-    stopMove() {
-        window.addEventListener("keyup", function (event) {
-            if (["w", "a", "s", "d", "W", "A", "S", "D"].includes(event.key)) {
-                Player.movement.x = 0;
-                Player.movement.y = 0;
-            }
-        });
-    },
+    
 
     updatePosition() {
         this.player.style.left = this.positionX + "px";
@@ -175,7 +181,6 @@ const Game = {
 
 const gameLoop = function () {
     Player.move();
-    Player.stopMove();
     Player.updatePosition();
     enemies.forEach((enemy) => enemy.move());
     Game.detectCollision();
