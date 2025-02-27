@@ -59,8 +59,7 @@ a{
     width: 800px;
     height: 400px;
     margin: 0px 250px;
-    border: solid 3px black;
-
+    border: solid black 1px;
     display: flex;
     justify-content: center;
     align-items: center;
