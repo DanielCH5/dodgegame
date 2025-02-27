@@ -9,6 +9,7 @@ window.addEventListener("keyup", function (event) {
     delete activeKeys[event.key.toLowerCase()]; // Remove key from tracking
     updateMovement();
 });
+
 function updateMovement() {
     Player.movement.x = 0;
     Player.movement.y = 0;
@@ -33,11 +34,12 @@ class Enemy {
         this.enemy = document.createElement('div');
         this.enemy.classList.add('enemy');
         document.body.appendChild(this.enemy);
-        this.positionX = 250;
-        this.positionY = this.getRandomInt(100, 500);
-        this.movement = { x: this.getRandomInt(3, 10), y: this.calculateMovement() }; // Random speed between 1 and 10
+
         this.width = 10;
         this.height = 10;
+
+        this.resetPosition(); // Initialize enemy position and movement
+
         this.updatePosition();
     }
 
@@ -45,28 +47,22 @@ class Enemy {
         return Math.floor(Math.random() * (max - min + 1)) + min; // Inclusive min and max
     }
 
-
-
-    //Random til at finde ud af om at de skal spawne fra højre eller venstre (bliver ikke brugt lige nu)
-    calculateX() {
-        const n = this.getRandomInt(1, 2);
-        if (n === 1) {
-            this.positionX = 250;
-            return this.positionX;
-
-        } else {
-            this.positionX = 1040;
-            return this.positionX;
-        }
+    calculateMovementY() {
+        return this.positionY >= 300 ? -this.getRandomInt(0, 5) : this.getRandomInt(0, 5);
     }
 
-    calculateMovement() {
-        const n = this.positionY;
-        if (n >= 300) {
-            return -this.getRandomInt(0, 5);
-        } else {
-            return this.getRandomInt(0, 5);
-        }
+    resetPosition() {
+        const spawnLeft = this.getRandomInt(1, 2) === 1; // 50% chance to spawn on left or right
+
+        this.positionX = spawnLeft ? 250 : 1040; 
+        this.positionY = this.getRandomInt(100, 500); 
+
+        this.movement = { 
+            x: spawnLeft ? this.getRandomInt(3, 10) : -this.getRandomInt(3, 10), // Move right if left spawn, left if right spawn
+            y: this.calculateMovementY()
+        };
+
+        this.updatePosition();
     }
 
     move() {
@@ -75,25 +71,14 @@ class Enemy {
             this.positionX += this.movement.x;
             this.positionY += this.movement.y;
 
-            if (this.positionX >= 1040 || this.positionX <= 250 || this.positionY >= 490 || this.positionY <= 100) {
-                this.removeEnemy();
+            if (this.positionX >= 1050 || this.positionX <= 249 || this.positionY >= 500 || this.positionY <= 99) {
+                this.resetPosition(); // Reset when out of bounds
                 return;
             }
 
             this.updatePosition();
         }
     }
-
-    // Method to remove enemy from DOM
-    removeEnemy() {
-        this.enemy.remove(); // Remove from the DOM
-        const index = enemies.indexOf(this);
-        if (index > -1) {
-            enemies.splice(index, 1); // Remove from the array
-        }
-        enemies.push(new Enemy());
-    }
-
 
     updatePosition() {
         this.enemy.style.position = 'absolute';
@@ -102,11 +87,28 @@ class Enemy {
     }
 }
 
+
 // Create multiple enemies
 const enemies = [];
 for (let i = 0; i < 5; i++) {
     enemies.push(new Enemy());
 }
+function resetEnemies() {
+    enemies.forEach((enemy) => {
+        const spawnLeft = enemy.getRandomInt(1, 2) === 1; // 50% chance to spawn on either side
+        enemy.positionX = spawnLeft ? 250 : 1040; // Set X position
+
+        enemy.positionY = enemy.getRandomInt(100, 500); // Random Y position
+        enemy.movement = { 
+            x: spawnLeft ? enemy.getRandomInt(3, 10) : -enemy.getRandomInt(3, 10), // Move right if left spawn, left if right spawn
+            y: enemy.calculateMovementY()
+        };
+
+        enemy.updatePosition(); 
+    });
+}
+
+
 
 const Player = {
     player: document.getElementById("player"),
@@ -171,6 +173,7 @@ const Game = {
             ) {
                 Game.lives--;
                 Game.updateUI();
+                resetEnemies();
                 if (this.lives <= 0) {
                     this.end();
                 }
