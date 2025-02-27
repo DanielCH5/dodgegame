@@ -47,10 +47,9 @@ a{
     grid-template-columns: 1fr 1fr;
     gap: 200px;
     font-size: 24px;
-    -webkit-text-stroke: 0.5px black;
+    -webkit-text-stroke: 0.8px black;
 }
 #game {
-
     width: 100%;
     height: 100%;
     display: flex;
