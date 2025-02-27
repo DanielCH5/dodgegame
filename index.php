@@ -24,7 +24,7 @@
 
 
     <div id="game">
-        <!--<div id="menu">
+        <div id="menu">
             <h1 id="title">DODGE GAME</h1>
 
 
@@ -37,13 +37,13 @@
                     <a href="">SCORES</a>
                 </div>
             </div>
-        </div>-->
-        <div id="game-container">
+        </div>
+        <!--<div id="game-container">
             <div id="player">
 
             </div>
 
-        </div>
+        </div><-->
 
 
     </div>
