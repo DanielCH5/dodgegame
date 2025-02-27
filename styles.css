@@ -1,10 +1,51 @@
+@font-face {
+    font-family: PressStart2P;
+    src: url(PressStart2P-Regular.ttf);
+  }
+  
 * {
     margin: 0;
     box-sizing: border-box;
     padding: 0 ;
+    
+}
+h1{
+    font-size: 32px;
+}
+a{
+    text-decoration: none;
+    color: white;
 
 }
+#menu{
+    display: grid;
+    font-family: PressStart2P;
+    border: solid 5px black;
+    border-radius: 30px;
+}
+#title{
+    color: white;
+    justify-self: center;
+    padding-top: 28px;
+    -webkit-text-stroke: 0.5px black;
+}
+#menu-buttons{
+    display: grid;
+}
+#start{
+    justify-self: center;
+    -webkit-text-stroke: 0.8px black;
+    font-size: 24px;
 
+}
+#settings{
+    display: grid;
+    justify-self:center;
+    grid-template-columns: 1fr 1fr;
+    gap: 200px;
+    font-size: 24px;
+    -webkit-text-stroke: 0.5px black;
+}
 #game {
 
     width: 100%;
@@ -18,11 +59,19 @@
     width: 800px;
     height: 400px;
     margin: 0px 250px;
-    border: solid black 1px;
+    border: solid 3px black;
+
     display: flex;
     justify-content: center;
     align-items: center;
 
+}
+
+#menu{
+    background-image: linear-gradient(#8A00FF, #b700ff, #da00ff);
+    width: 800px;
+    height: 400px;
+    margin: 0px 250px;
 }
 
 #player {

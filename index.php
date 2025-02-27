@@ -24,7 +24,20 @@
 
 
     <div id="game">
+        <!--<div id="menu">
+            <h1 id="title">DODGE GAME</h1>
 
+
+            <div id="menu-buttons">
+
+                <a href="" id="start">START</a>
+
+                <div id="settings">
+                    <a href="">GUIDE</a>
+                    <a href="">SCORES</a>
+                </div>
+            </div>
+        </div>-->
         <div id="game-container">
             <div id="player">
 
