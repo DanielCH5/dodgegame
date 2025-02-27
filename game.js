@@ -34,7 +34,8 @@ class Enemy {
         this.enemy = document.createElement('div');
         this.enemy.classList.add('enemy');
         document.body.appendChild(this.enemy);
-
+        this.active = true;
+        this.collide = true;
         this.width = 10;
         this.height = 10;
 
@@ -54,10 +55,10 @@ class Enemy {
     resetPosition() {
         const spawnLeft = this.getRandomInt(1, 2) === 1; // 50% chance to spawn on left or right
 
-        this.positionX = spawnLeft ? 250 : 1040; 
-        this.positionY = this.getRandomInt(100, 500); 
+        this.positionX = spawnLeft ? 250 : 1040;
+        this.positionY = this.getRandomInt(100, 500);
 
-        this.movement = { 
+        this.movement = {
             x: spawnLeft ? this.getRandomInt(3, 10) : -this.getRandomInt(3, 10), // Move right if left spawn, left if right spawn
             y: this.calculateMovementY()
         };
@@ -65,8 +66,21 @@ class Enemy {
         this.updatePosition();
     }
 
+    removeEnemy() {
+        this.enemy.style.display = 'none';
+        this.active = false; // Hide the enemy
+        this.collide = false;
+    }
+
+    respawnEnemy() {
+        this.resetPosition();
+        this.enemy.style.display = 'block'; // Show the enemy again after reset
+        this.active = true;
+        this.collide = true;
+    }
+
     move() {
-        if (Game.started) {
+        if (Game.started && this.active) {
             this.enemy.style.display = 'block';
             this.positionX += this.movement.x;
             this.positionY += this.movement.y;
@@ -93,19 +107,16 @@ const enemies = [];
 for (let i = 0; i < 5; i++) {
     enemies.push(new Enemy());
 }
-function resetEnemies() {
+function removeAndRespawnEnemies() {
     enemies.forEach((enemy) => {
-        const spawnLeft = enemy.getRandomInt(1, 2) === 1; // 50% chance to spawn on either side
-        enemy.positionX = spawnLeft ? 250 : 1040; // Set X position
-
-        enemy.positionY = enemy.getRandomInt(100, 500); // Random Y position
-        enemy.movement = { 
-            x: spawnLeft ? enemy.getRandomInt(3, 10) : -enemy.getRandomInt(3, 10), // Move right if left spawn, left if right spawn
-            y: enemy.calculateMovementY()
-        };
-
-        enemy.updatePosition(); 
+        enemy.removeEnemy(); // Hide enemy immediately
     });
+
+    setTimeout(() => {
+        enemies.forEach((enemy) => {
+            enemy.respawnEnemy(); // Respawn efter 0.5 sek
+        });
+    }, 500);
 }
 
 
@@ -127,7 +138,7 @@ const Player = {
         if (this.positionY > 490) this.positionY = 490;
     },
 
-    
+
 
     updatePosition() {
         this.player.style.left = this.positionX + "px";
@@ -165,7 +176,7 @@ const Game = {
 
     detectCollision() {
         enemies.forEach((enemy) => {
-            if (
+            if (enemy.collide &&
                 Player.positionX + Player.width >= enemy.positionX &&
                 Player.positionX <= enemy.positionX + enemy.width &&
                 Player.positionY + Player.height >= enemy.positionY &&
@@ -173,8 +184,9 @@ const Game = {
             ) {
                 Game.lives--;
                 Game.updateUI();
-                resetEnemies();
-                if (this.lives <= 0) {
+                if (Game.lives > 0) {
+                    removeAndRespawnEnemies(); // Delay enemy respawn by 2 seconds
+                } else {
                     this.end();
                 }
             }
