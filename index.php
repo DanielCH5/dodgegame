@@ -13,7 +13,6 @@
     <div id="scores">
         <p id="score--value"></p>
         <p id="lives"></p>
-        <button id="startButton" onclick="Game.start()">Start</button>
         <!--<div class="container">
             <div data-player1 class="player1"></div>
             <div data-score1 class="score1"></div>
@@ -30,7 +29,7 @@
 
             <div id="menu-buttons">
 
-                <a href="" id="start">START</a>
+                <a  id="start" onclick="Game.start()">START</a>
 
                 <div id="settings">
                     <a href="">GUIDE</a>

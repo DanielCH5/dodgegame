@@ -59,6 +59,17 @@ a{
 }
 #scores{
     height: 100px;
+    display: grid;
+    font-family: PressStart2P;
+    
+}
+#score--value{
+    justify-self: center;
+    font-size: 24px;
+    padding-top: 20px;
+}
+#lives{
+    justify-self: center;
 }
 #game-container{
     width: 800px;
