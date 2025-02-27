@@ -31,9 +31,6 @@
 
             </div>
 
-            <div class="enemy">
-
-            </div>
         </div>
 
 

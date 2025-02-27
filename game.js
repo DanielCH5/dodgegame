@@ -164,14 +164,17 @@ const Game = {
     start() {
         this.started = true;
         this.score = setInterval(() => {
-            this.highscore += 1000;
+            this.highscore += 500;
             this.updateUI();
-        }, 1000);
+        }, 500);
     },
 
     end() {
         this.started = false;
         clearInterval(this.score);
+        enemies.forEach((enemy) => {
+            enemy.removeEnemy(); // Hide enemy immediately
+        });
     },
 
     detectCollision() {
@@ -185,7 +188,7 @@ const Game = {
                 Game.lives--;
                 Game.updateUI();
                 if (Game.lives > 0) {
-                    removeAndRespawnEnemies(); // Delay enemy respawn by 2 seconds
+                    removeAndRespawnEnemies(); // Delay enemy respawn by 0.5 seconds
                 } else {
                     this.end();
                 }
