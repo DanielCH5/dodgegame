@@ -21,7 +21,7 @@
         </div>-->
     </div>
 
-
+    <button onclick="Game.start()">Start</button>
     <div id="game">
         <!--<div id="menu">
             <h1 id="title">DODGE GAME</h1>
@@ -38,7 +38,7 @@
             </div>
         </div>-->
         <div id="game-container">
-            <button onclick="Game.start()">Boundaries</button>
+            
             <div id="player">
 
             </div>
