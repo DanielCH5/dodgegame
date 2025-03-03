@@ -95,7 +95,8 @@ a{
 .enemy{
     width: 10px;
     height: 10px;
-    background-color: purple;
+    background-color: #ff0004;
+    border: solid 1px black;
     position:absolute;
     display: none;
 }
