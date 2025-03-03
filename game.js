@@ -18,13 +18,13 @@ function updateMovement() {
         Player.movement.y = Player.positionY > Game.top ? -3 : 0;
     }
     if (activeKeys["s"]) {
-        Player.movement.y = Player.positionY < (Game.bottom - 10) ? 3 : 0;
+        Player.movement.y = Player.positionY < (Game.bottom - Player.height) ? 3 : 0;
     }
     if (activeKeys["a"]) {
         Player.movement.x = Player.positionX > Game.left ? -3 : 0;
     }
     if (activeKeys["d"]) {
-        Player.movement.x = Player.positionX < (Game.right - 10) ? 3 : 0;
+        Player.movement.x = Player.positionX < (Game.right - Player.width) ? 3 : 0;
     }
 }
 
@@ -186,9 +186,9 @@ const Player = {
         this.positionY += this.movement.y;
         //Sørger for at spilleren ikke kan bevæge sig out of bounds
         if (this.positionX < boundaries.left) this.positionX = boundaries.left;
-        if (this.positionX > (boundaries.right - this.width) ) this.positionX = boundaries.right - 10;
+        if (this.positionX > (boundaries.right - this.width) ) this.positionX = (boundaries.right - Player.width);
         if (this.positionY < boundaries.top) this.positionY = boundaries.top;
-        if (this.positionY > (boundaries.bottom - this.height)) this.positionY = boundaries.bottom - 10;
+        if (this.positionY > (boundaries.bottom - this.height)) this.positionY = (boundaries.bottom - Player.height);
     },
 
 
