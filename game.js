@@ -102,7 +102,7 @@ class Enemy {
     }
 
     calculateMovementY() {
-        return this.positionY >= 300 ? -this.getRandomInt(0, 5) : this.getRandomInt(0, 5);
+        return this.positionY >= ((Game.bottom + Game.top) / 2) ? -this.getRandomInt(0, 5) : this.getRandomInt(0, 5);
     }
 
     resetPosition() {
