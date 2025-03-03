@@ -26,7 +26,6 @@ $page = $_GET['page'] ?? 'menu';
         </div>-->
     </div>
 
-    <button onclick="Game.start()">Start</button>
     <div id="game">
     <?php if ($page === 'menu'): ?>
         <div id="menu">
