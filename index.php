@@ -1,3 +1,8 @@
+<?php
+
+$page = $_GET['page'] ?? 'menu';
+
+?>
 <!doctype html>
 <html lang="en">
 
@@ -23,28 +28,28 @@
 
     <button onclick="Game.start()">Start</button>
     <div id="game">
-        <!--<div id="menu">
+    <?php if ($page === 'menu'): ?>
+        <div id="menu">
             <h1 id="title">DODGE GAME</h1>
 
 
             <div id="menu-buttons">
-
-                <a  id="start" onclick="Game.start()">START</a>
-
+                <a href="/?page=game" id="start">START</a>
                 <div id="settings">
                     <a href="">GUIDE</a>
                     <a href="">SCORES</a>
                 </div>
             </div>
-        </div>-->
+        </div>
+        <?php elseif ($page === 'game'): ?>
         <div id="game-container">
-            
+
             <div id="player">
 
             </div>
 
         </div>
-
+        <?php endif; ?>
 
     </div>
     <script>
