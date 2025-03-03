@@ -102,7 +102,7 @@ class Enemy {
     }
 
     calculateMovementY() {
-        return this.positionY >= ((Game.bottom + Game.top) / 2) ? -this.getRandomInt(0, 5) : this.getRandomInt(0, 5);
+        return this.positionY >= ((Game.bottom + Game.top) / 2) ? -this.getRandomInt(0, 3) : this.getRandomInt(0, 3);
     }
 
     resetPosition() {
@@ -112,7 +112,7 @@ class Enemy {
         this.positionY = this.getRandomInt(Game.top, Game.bottom);
 
         this.movement = {
-            x: spawnLeft ? this.getRandomInt(3, 10) : -this.getRandomInt(3, 10), // Move right if left spawn, left if right spawn
+            x: spawnLeft ? this.getRandomInt(3, 7) : -this.getRandomInt(3, 7), // Move right if left spawn, left if right spawn
             y: this.calculateMovementY()
         };
 
