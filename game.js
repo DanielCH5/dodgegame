@@ -108,7 +108,7 @@ class Enemy {
     resetPosition() {
         const spawnLeft = this.getRandomInt(1, 2) === 1; // 50% chance to spawn on left or right
 
-        this.positionX = spawnLeft ? Game.left : (Game.right - 10);
+        this.positionX = spawnLeft ? Game.left : (Game.right - this.width);
         this.positionY = this.getRandomInt(Game.top, Game.bottom);
 
         this.movement = {
@@ -138,7 +138,7 @@ class Enemy {
             this.positionX += this.movement.x;
             this.positionY += this.movement.y;
 
-            if (this.positionX >= Game.right || this.positionX <= (Game.left - 1) || this.positionY >= Game.bottom || this.positionY <= (Game.top - 1)) {
+            if (this.positionX >= (Game.right - this.width) || this.positionX <= Game.left || this.positionY >= (Game.bottom - this.height)|| this.positionY <= Game.top ) {
                 this.resetPosition(); // Reset when out of bounds
                 return;
             }
@@ -186,9 +186,9 @@ const Player = {
         this.positionY += this.movement.y;
         //Sørger for at spilleren ikke kan bevæge sig out of bounds
         if (this.positionX < boundaries.left) this.positionX = boundaries.left;
-        if (this.positionX > (boundaries.right - 10) ) this.positionX = boundaries.right - 10;
+        if (this.positionX > (boundaries.right - this.width) ) this.positionX = boundaries.right - 10;
         if (this.positionY < boundaries.top) this.positionY = boundaries.top;
-        if (this.positionY > (boundaries.bottom - 10)) this.positionY = boundaries.bottom - 10;
+        if (this.positionY > (boundaries.bottom - this.height)) this.positionY = boundaries.bottom - 10;
     },
 
 

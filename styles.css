@@ -73,7 +73,7 @@ a{
 }
 #game-container{
     width: 1000px;
-    height: 600px;
+    height: 400px;
     margin: 0px 250px;
     border: solid black 1px;
     display: flex;
