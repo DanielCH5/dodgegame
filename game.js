@@ -112,7 +112,7 @@ class Enemy {
         this.positionY = this.getRandomInt(Game.top, Game.bottom);
 
         this.movement = {
-            x: spawnLeft ? this.getRandomInt(3, 7) : -this.getRandomInt(3, 7), // Move right if left spawn, left if right spawn
+            x: spawnLeft ? this.getRandomInt(3, 10) : -this.getRandomInt(3, 10), // Move right if left spawn, left if right spawn
             y: this.calculateMovementY()
         };
 
