@@ -114,7 +114,7 @@ $page = $_GET['page'] ?? 'menu';
                                 Collision = <br> <br>
                                 -1<img src="heart.svg" width="20px" alt="">
                             </p>
-                            
+
                         </div>
                     </div>
 
@@ -122,8 +122,15 @@ $page = $_GET['page'] ?? 'menu';
 
 
                     <div class="third">
-
-
+                        <div>
+                            <a href="/?page=menu">BACK</a>
+                        </div>
+                        <div>
+                            
+                        </div>
+                        <div>
+                            <a href="/?page=game">START GAME</a>
+                        </div>
                     </div>
 
                 </div>
