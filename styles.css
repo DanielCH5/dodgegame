@@ -54,6 +54,11 @@ a {
     border-radius: 30px;
     padding: 30px;
 }
+.gameover-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
 .heading{
     text-align: center;
 }

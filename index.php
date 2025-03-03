@@ -80,12 +80,6 @@ $page = $_GET['page'] ?? 'menu';
             <div id="scores">
                 <p class="score1"></p>
                 <p id="lives"></p>
-                <!--<div class="container">
-            <div data-player1 class="player1"></div>
-            <div data-score1 class="score1"></div>
-            <button data-send-button class="send-button">Send</button>
-            <pre data-response-preview class="response-preview"></pre>
-        </div>-->
             </div>
             <div id="game-container">
 
@@ -193,14 +187,23 @@ $page = $_GET['page'] ?? 'menu';
                     <div>
                         <p>FINAL SCORE</p>
                         <p data-score1 class="score1"></p>
+                        <div>
+                            <input type="text" placeholder="Enter your name here" class="submit-name-input">
+                            <button class="submit-button" onclick="submitScore()">Submit</button>
+                            <pre data-response-preview class="response-preview"></pre>
+                        </div>
                     </div>
-
 
                     <div>
-                        <input type="text" placeholder="Enter your name here" class="submit-name-input">
-                        <button class="submit-button" onclick="submitScore()">Submit</button>
-                        <pre data-response-preview class="response-preview"></pre>
+                        <iframe
+                            src="https://highscores.martindilling.com/games/63/embed?fontSize=80&bgColor=111827&textColor=59cf8f&borderColor=3f485b"
+                            title="Highscore table for Dodge test" width="100%" height="100%"></iframe>
                     </div>
+
+
+
+
+
                 </div>
             </div>
         <?php endif; ?>
