@@ -1,4 +1,50 @@
 <?php
+// Set game id to easily change it both in the url to send highscores and showing the highscores
+$gameId = getenv('GAME_ID') ?: 63;
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    // Get from environment in production, but use a test token for development
+    $apiToken = getenv('API_TOKEN') ?: '27|SmleWwD2EOu903blOpkE5or2LO2U5QmJ3oedqjz24a8425d2';
+
+    $url = "https://highscores.martindilling.com/api/v1/games/{$gameId}/highscores";
+    $data = [
+        'player' => $data['player'] ?? null,
+        'score' => $data['score'] ?? null,
+    ];
+
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        "Authorization: Bearer {$apiToken}",
+        'Content-Type: application/json',
+        'Accept: application/json',
+    ]);
+
+    $response = curl_exec($ch);
+    if ($response === false) {
+        // Handle cURL execution error
+        die('cURL error: ' . curl_error($ch));
+    }
+
+    // Get HTTP response status code
+    $httpStatusCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+    // Check for HTTP errors (non-2xx status codes)
+    if ($httpStatusCode < 200 || $httpStatusCode >= 300) {
+        die("HTTP error occurred: Status code $httpStatusCode. Response: $response");
+    }
+    curl_close($ch);
+
+    http_response_code(200);
+    header('Content-Type: application/json; charset=UTF-8');
+    echo json_encode(['success' => true]);
+    exit();
+}
 
 $page = $_GET['page'] ?? 'menu';
 
@@ -15,18 +61,10 @@ $page = $_GET['page'] ?? 'menu';
 </head>
 
 <body>
-    <div id="scores">
-        <p id="score--value"></p>
-        <p id="lives"></p>
-        <!--<div class="container">
-            <div data-player1 class="player1"></div>
-            <div data-score1 class="score1"></div>
-            <button data-send-button class="send-button">Send</button>
-            <pre data-response-preview class="response-preview"></pre>
-        </div>-->
-    </div>
+
 
     <div id="game">
+
         <?php if ($page === 'menu'): ?>
             <div id="menu">
                 <h1 id="title">DODGE GAME</h1>
@@ -39,6 +77,16 @@ $page = $_GET['page'] ?? 'menu';
                 </div>
             </div>
         <?php elseif ($page === 'game'): ?>
+            <div id="scores">
+                <p class="score1"></p>
+                <p id="lives"></p>
+                <!--<div class="container">
+            <div data-player1 class="player1"></div>
+            <div data-score1 class="score1"></div>
+            <button data-send-button class="send-button">Send</button>
+            <pre data-response-preview class="response-preview"></pre>
+        </div>-->
+            </div>
             <div id="game-container">
 
                 <div id="player">
@@ -126,7 +174,7 @@ $page = $_GET['page'] ?? 'menu';
                             <a href="/?page=menu">BACK</a>
                         </div>
                         <div>
-                            
+
                         </div>
                         <div>
                             <a href="/?page=game">START GAME</a>
@@ -135,56 +183,30 @@ $page = $_GET['page'] ?? 'menu';
 
                 </div>
             </div>
+        <?php elseif ($page === 'gameover'): ?>
+            <div id="gameover">
+                <div class="heading">
+                    <h2>GAME OVER</h2>
+                </div>
+
+                <div class="gameover-grid">
+                    <div>
+                        <p>FINAL SCORE</p>
+                        <p data-score1 class="score1"></p>
+                    </div>
+
+
+                    <div>
+                        <input type="text" placeholder="Enter your name here" class="submit-name-input">
+                        <button class="submit-button" onclick="submitScore()">Submit</button>
+                        <pre data-response-preview class="response-preview"></pre>
+                    </div>
+                </div>
+            </div>
         <?php endif; ?>
 
     </div>
-    <script>
-        const playerElement = document.querySelector('[data-player1]');
-        const scoreElement = document.querySelector('[data-score1]');
-        const sendButton = document.querySelector('[data-send-button]');
-        const responsePreviewElement = document.querySelector('[data-response-preview]');
 
-        function generatePirateName() {
-            const firstNames = ["Blackbeard", "Salty", "One-Eyed", "Mad", "Captain", "Peg-Leg", "Red", "Stormy", "Jolly", "Barnacle"];
-            const lastNames = ["McScurvy", "Silverhook", "Rumbelly", "Seadog", "Plankwalker", "Bones", "Squidbeard", "Driftwood", "Sharkbait", "Bootstraps"];
-
-            const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-            const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-
-            return `${randomFirstName} ${randomLastName}`;
-        }
-        const player1 = generatePirateName();
-        const score1 = Math.round(Math.random() * 1000);
-
-        playerElement.textContent = player1;
-        scoreElement.textContent = score1.toString();
-        sendButton.addEventListener('click', () => {
-            fetch(
-                'submit-highscore.php',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        player1: player1,
-                        score1: score1,
-                    }),
-                }
-            )
-                .then(function (response) {
-                    return response.json();
-                })
-                .then(function (data) {
-                    console.log(data);
-                    responsePreviewElement.textContent = JSON.stringify(data, null, 2);
-                })
-                .catch(function (error) {
-                    console.error(error);
-                    responsePreviewElement.textContent = JSON.stringify(error, null, 2);
-                });
-        });
-    </script>
     <script src="game.js"></script>
 </body>
 

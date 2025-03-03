@@ -1,7 +1,37 @@
+
+
+const UI = {
+    score: document.querySelector(".score1"),
+    lives: document.querySelector("#lives"),
+    nameInput: document.querySelector('.submit-name-input'),
+    submitButton: document.querySelector('.submit-button'),
+
+};
 const activeKeys = {};
 
+function submitScore() {
+    fetch('/', {
+        method: 'POST',
+        body: JSON.stringify({
+            player: UI.nameInput.value,
+            score: sessionStorage.getItem("finalScore"),
+        }),
+    })
+        .then((response) => {
+            if (!response.ok) throw new Error('Failed to submit score');
+            return response.json();
+        })
+        .then(() => (window.location.href = '/?page=menu'))
+        .catch((error) => {
+            console.error(error);
+        });
+        sessionStorage.removeItem("finalScore");
 
-const container = document.getElementById("game-container");
+};
+if (sessionStorage.getItem("finalScore")) {
+    UI.score.textContent = sessionStorage.getItem("finalScore");
+};
+const container = document.querySelector("#game-container");
 
 const boundaries = container.getBoundingClientRect();
 
@@ -15,6 +45,7 @@ const Game = {
     bottom: boundaries.bottom,
     left: boundaries.left,
     right: boundaries.right,
+    endScore: null,
     updateUI() {
         UI.score.textContent = this.highscore.toString();
         UI.lives.textContent = this.lives.toString();
@@ -34,10 +65,13 @@ const Game = {
 
     end() {
         this.started = false;
+        sessionStorage.setItem("finalScore", this.highscore);
         clearInterval(this.score);
         enemies.forEach((enemy) => {
             enemy.removeEnemy(); // Hide enemy immediately
         });
+        window.location.href = "/?page=gameover";
+
     },
 
     detectCollision() {
@@ -176,10 +210,7 @@ const Player = {
     },
 };
 
-const UI = {
-    score: document.querySelector("#score--value"),
-    lives: document.querySelector("#lives"),
-};
+
 
 window.addEventListener("keydown", function (event) {
     if (Game.started) {
@@ -209,6 +240,10 @@ function updateMovement() {
         Player.movement.x = Player.positionX < (Game.right - Player.width) ? 3 : 0;
     }
 }
+
+
+
+
 
 const gameLoop = function () {
     Player.move();
