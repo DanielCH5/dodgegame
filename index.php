@@ -27,27 +27,107 @@ $page = $_GET['page'] ?? 'menu';
     </div>
 
     <div id="game">
-    <?php if ($page === 'menu'): ?>
-        <div id="menu">
-            <h1 id="title">DODGE GAME</h1>
-
-
-            <div id="menu-buttons">
-                <a href="/?page=game" id="start">START</a>
-                <div id="settings">
-                    <a href="">GUIDE</a>
-                    <a href="">SCORES</a>
+        <?php if ($page === 'menu'): ?>
+            <div id="menu">
+                <h1 id="title">DODGE GAME</h1>
+                <div id="menu-buttons">
+                    <a href="/?page=game" id="start">START</a>
+                    <div id="settings">
+                        <a href="?page=guide">GUIDE</a>
+                        <a href="">SCORES</a>
+                    </div>
                 </div>
             </div>
-        </div>
         <?php elseif ($page === 'game'): ?>
-        <div id="game-container">
+            <div id="game-container">
 
-            <div id="player">
+                <div id="player">
+
+                </div>
 
             </div>
 
-        </div>
+        <?php elseif ($page === 'guide'): ?>
+            <div id="guide">
+                <div class="heading">
+                    <h3>GUIDE</h3>
+                </div>
+                <div class="guidegrids">
+                    <div class="first">
+                        <div class="info">
+                            <p>
+                                Move your character using
+                            </p>
+                            <div class="example">
+                                <div class="movementkeys">
+                                    <div>W</div>
+                                    <div>A</div>
+                                    <div>S</div>
+                                    <div>D</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info">
+                            <p>
+                                This black little box is you
+                            </p>
+                            <div class="example">
+                                <div class="exampleplayer">
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="info">
+                            <p>
+                                Avoid these guys
+                            </p>
+                            <div class="example">
+                                <div class="exampleenemy">
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="second">
+                        <div class="info">
+                            <p>
+                                You have 3 lives
+                            </p>
+                            <div class="liv">
+                                <img src="heart.svg" width="20px" alt="Red pixel heart">
+                                <img src="heart.svg" width="20px" alt="Red pixel heart">
+                                <img src="heart.svg" width="20px" alt="Red pixel heart">
+                            </div>
+                        </div>
+                        <div class="info">
+                            <p>
+                                Increase your score by staying alive
+                            </p>
+                        </div>
+                        <div class="info">
+                            <p>
+                                Collision = <br> <br>
+                                -1<img src="heart.svg" width="20px" alt="">
+                            </p>
+                            
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="third">
+
+
+                    </div>
+
+                </div>
+            </div>
         <?php endif; ?>
 
     </div>

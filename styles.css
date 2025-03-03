@@ -1,29 +1,36 @@
 @font-face {
     font-family: PressStart2P;
     src: url(PressStart2P-Regular.ttf);
-  }
-  
+}
+
 * {
     margin: 0;
     box-sizing: border-box;
-    padding: 0 ;
-    
+    padding: 0;
+
 }
-h1{
+body{
+    background-color: #8A00FF;
+}
+
+h1 {
     font-size: 32px;
 }
-a{
+
+a {
     text-decoration: none;
     color: white;
 
 }
-#title{
+
+#title {
     color: white;
     justify-self: center;
     padding-top: 28px;
     -webkit-text-stroke: 0.5px black;
 }
-#menu{
+
+#menu {
     background-image: linear-gradient(#8A00FF, #b700ff, #da00ff);
     width: 800px;
     height: 400px;
@@ -32,23 +39,77 @@ a{
     border: solid 5px black;
     border-radius: 30px;
 }
-#menu-buttons{
-    display: grid;
+
+#guide {
+    background-image: linear-gradient(#8A00FF, #b700ff, #da00ff);
+    width: 800px;
+    height: 400px;
+    font-family: PressStart2P;
+    border: solid 5px black;
+    border-radius: 30px;
+    padding: 30px;
+    text-align: center;
+    color: white;
+    -webkit-text-stroke: 0.5px black;
 }
-#start{
+
+.guidegrids {
+    gap: 20px;
+    grid-template-rows: 1fr 1fr 1fr;
+    display: grid;
+    margin-top: 40px;
+}
+
+.first {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+
+}
+
+.second {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+
+}
+
+.info {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.info p{
+    margin-bottom: 20px;
+}
+
+.info div {
+    margin-top: 0px;
+}
+
+#menu-buttons {
+    display: grid;
+    -webkit-text-stroke: 0.5px black;
+}
+
+#start {
     justify-self: center;
     -webkit-text-stroke: 0.8px black;
     font-size: 24px;
 
 }
-#settings{
+
+#settings {
     display: grid;
-    justify-self:center;
+    justify-self: center;
     grid-template-columns: 1fr 1fr;
     gap: 200px;
     font-size: 24px;
     -webkit-text-stroke: 0.8px black;
 }
+
 #game {
     width: 100%;
     height: 100%;
@@ -57,21 +118,25 @@ a{
     justify-content: center;
 
 }
-#scores{
+
+#scores {
     height: 100px;
     display: grid;
     font-family: PressStart2P;
-    
+
 }
-#score--value{
+
+#score--value {
     justify-self: center;
     font-size: 24px;
     padding-top: 20px;
 }
-#lives{
+
+#lives {
     justify-self: center;
 }
-#game-container{
+
+#game-container {
     width: 1000px;
     height: 400px;
     margin: 0px 250px;
@@ -92,12 +157,52 @@ a{
     position: absolute;
 }
 
-.enemy{
+.exampleplayer {
+    width: 15px;
+    height: 15px;
+    background-color: black;
+
+}
+
+.enemy {
     width: 10px;
     height: 10px;
     background-color: #ff0004;
     border: solid 1px black;
-    position:absolute;
+    position: absolute;
     display: none;
 }
 
+.example {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.movementkeys{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap:16px;
+
+}
+.movementkeys div{
+    color:white;
+    -webkit-text-stroke: 0.5px black;
+    padding: 10px;
+    border: solid 1px black;
+    background-image: linear-gradient(#8A00FF, #b700ff, #da00ff);
+    display: flex;
+    align-items: center;
+
+}
+.exampleenemy {
+    width: 15px;
+    height: 15px;
+    background-color: #ff0004;
+    border: solid 1px black;
+
+
+}
