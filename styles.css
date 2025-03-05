@@ -26,26 +26,27 @@ p {
 
 a {
     text-decoration: none;
-    color: white;
+    color: rgb(0, 255, 229);
 
 }
 
 #title {
-    color: white;
+    color: rgb(0, 255, 229);
     justify-self: center;
     padding-top: 28px;
     -webkit-text-stroke: 0.5px black;
 }
 
 #menu {
-    background-image: linear-gradient(#8A00FF, #b700ff, #da00ff);
+    /* background-image: linear-gradient(#8A00FF, #b700ff, #da00ff); */
+    background-color: black;
     width: 800px;
     height: 400px;
     display: grid;
     font-family: PressStart2P;
     border: solid 3px rgb(0, 255, 229);
     border-radius: 30px;
-    color: white;
+    color: rgb(0, 255, 229);
 }
 
 #gameover {
@@ -98,7 +99,8 @@ a {
 }
 
 #guide {
-    background-image: linear-gradient(#8A00FF, #b700ff, #da00ff);
+    /* background-image: linear-gradient(#8A00FF, #b700ff, #da00ff); */
+    background-color: black;
     width: 800px;
     height: 400px;
     font-family: PressStart2P;
@@ -106,7 +108,7 @@ a {
     border-radius: 30px;
     padding: 30px;
     text-align: center;
-    color: white;
+    color: rgb(0, 255, 229);
     -webkit-text-stroke: 0.5px black;
 }
 
@@ -205,7 +207,8 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(#8A00FF, #b700ff, #da00ff);
+    /* background-image: linear-gradient(#8A00FF, #b700ff, #da00ff); */
+    background-color: black;
     border-radius: 16px;
 
 
@@ -217,14 +220,14 @@ a {
 #player {
     width: 10px;
     height: 10px;
-    background-color: black;
+    background-color: rgb(0, 255, 229);
     position: absolute;
 }
 
 .exampleplayer {
     width: 15px;
     height: 15px;
-    background-color: black;
+    background-color: rgb(0, 255, 229);
 
 }
 
@@ -285,7 +288,7 @@ a {
 }
 
 .third div a {
-    color: white;
+    color: rgb(0, 255, 229);
 }
 
 input {
