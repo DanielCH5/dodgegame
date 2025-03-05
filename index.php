@@ -1,12 +1,12 @@
 <?php
 // Set game id to easily change it both in the url to send highscores and showing the highscores
-// $gameId = getenv('GAME_ID') ?: gameid;
+$gameId = getenv('GAME_ID') ?: 67;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
 
     // Get from environment in production, but use a test token for development
-    $apiToken = getenv('API_TOKEN') ?: //'token';
+    $apiToken = getenv('API_TOKEN') ?: 'token';
 
     $url = "https://highscores.martindilling.com/api/v1/games/{$gameId}/highscores";
     $data = [
@@ -199,7 +199,7 @@ $page = $_GET['page'] ?? 'menu';
 
                     <div>
                         <iframe
-                            src="https://highscores.martindilling.com/games/63/embed?fontSize=80&bgColor=111827&textColor=00ffe5&borderColor=00ffe5"
+                            src="https://highscores.martindilling.com/games/67/embed?fontSize=80&bgColor=111827&textColor=00ffe5&borderColor=00ffe5"
                             title="Highscore table for Dodge test" width="100%" height="100%"></iframe>
                     </div>
 
@@ -220,7 +220,7 @@ $page = $_GET['page'] ?? 'menu';
                     </div>
                     <div class="highscore-grid">
                     <iframe
-                            src="https://highscores.martindilling.com/games/63/embed?bgColor=111827&textColor=00ffe5&borderColor=00ffe5"
+                            src="https://highscores.martindilling.com/games/67/embed?bgColor=111827&textColor=00ffe5&borderColor=00ffe5"
                             title="Highscore table for Dodge test" width="100%" height="100%"></iframe>
                     </div>
                 </div>
