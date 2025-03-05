@@ -115,7 +115,7 @@ $page = $_GET['page'] ?? 'menu';
                         </div>
                         <div class="info">
                             <p>
-                                This black little box is you
+                                This blue little box is you
                             </p>
                             <div class="example">
                                 <div class="exampleplayer">
@@ -220,7 +220,7 @@ $page = $_GET['page'] ?? 'menu';
                     </div>
                     <div class="highscore-grid">
                     <iframe
-                            src="https://highscores.martindilling.com/games/63/embed?bgColor=111827&textColor=59cf8f&borderColor=3f485b"
+                            src="https://highscores.martindilling.com/games/63/embed?bgColor=111827&textColor=00ffe5&borderColor=00ffe5"
                             title="Highscore table for Dodge test" width="100%" height="100%"></iframe>
                     </div>
                 </div>

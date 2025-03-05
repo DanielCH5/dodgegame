@@ -323,3 +323,7 @@ input:focus::placeholder {
     font-family: PressStart2P;
     border: solid 3px rgb(0, 255, 229);
 }
+iframe{
+    border: solid 3px #00ffe5;
+    border-radius: 16px;
+}
