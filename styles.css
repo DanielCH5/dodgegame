@@ -163,8 +163,7 @@ a {
 
 }
 
-#scores img {
-color: white;}
+
 
 .score1 {
     justify-self: center;
@@ -208,8 +207,8 @@ color: white;}
 }
 
 .enemy {
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
     background-color: #ff0004;
     border: solid 1px black;
     position: absolute;
@@ -276,6 +275,7 @@ input {
     color: rgb(0, 255, 229);
     border-radius: 16px;
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 input::placeholder {
@@ -287,6 +287,7 @@ input:focus::placeholder {
 }
 .inputs{
     display: grid;
+    
 }
 .submit-button{
     justify-self: center;

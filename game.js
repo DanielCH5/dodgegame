@@ -108,8 +108,8 @@ class Enemy {
         document.body.appendChild(this.enemy);
         this.active = true;
         this.collide = true;
-        this.width = 10;
-        this.height = 10;
+        this.width = 15;
+        this.height = 15;
 
         this.resetPosition(); // Initialize enemy position and movement
 
