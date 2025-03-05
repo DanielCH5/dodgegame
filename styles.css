@@ -9,14 +9,16 @@
     padding: 0;
 
 }
-body{
-    background-color: #8A00FF;
+
+body {
+    background-color: black;
 }
 
 h1 {
     font-size: 32px;
 }
-p{
+
+p {
     font-size: 16px;
 }
 
@@ -41,33 +43,44 @@ a {
     height: 400px;
     display: grid;
     font-family: PressStart2P;
-    border: solid 5px black;
+    border: solid 3px rgb(0, 255, 229);
     border-radius: 30px;
+    color: white;
 }
+
 #gameover {
-    background-image: linear-gradient(#8A00FF, #b700ff, #da00ff);
+    background-color: black;
     width: 800px;
     height: 400px;
     display: grid;
     font-family: PressStart2P;
-    border: solid 5px black;
+    border: solid 3px rgb(0, 255, 229);
     border-radius: 30px;
     padding: 30px;
+    color: rgb(0, 255, 229);
 }
-.gameover-grid{
+
+.gameover-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
 }
-.heading{
+
+.gameover-grid div{
+    text-align: center;
+    }
+
+
+.heading {
     text-align: center;
 }
+
 #guide {
     background-image: linear-gradient(#8A00FF, #b700ff, #da00ff);
     width: 800px;
     height: 400px;
     font-family: PressStart2P;
-    border: solid 5px black;
+    border: solid 3px rgb(0, 255, 229);
     border-radius: 30px;
     padding: 30px;
     text-align: center;
@@ -103,7 +116,7 @@ a {
     flex-direction: column;
 }
 
-.info p{
+.info p {
     margin-bottom: 20px;
 }
 
@@ -146,8 +159,12 @@ a {
     height: 100px;
     display: grid;
     font-family: PressStart2P;
+    color: rgb(0, 255, 229);
 
 }
+
+#scores img {
+color: white;}
 
 .score1 {
     justify-self: center;
@@ -163,11 +180,12 @@ a {
     width: 1000px;
     height: 400px;
     margin: 0px 250px;
-    border: solid black 3px;
+    border: solid rgb(0, 255, 229) 3px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-image: linear-gradient(#8A00FF, #b700ff, #da00ff);
+    border-radius: 16px;
 
 
 
@@ -207,14 +225,15 @@ a {
     width: 100%;
 }
 
-.movementkeys{
-    display:grid;
+.movementkeys {
+    display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap:16px;
+    gap: 16px;
 
 }
-.movementkeys div{
-    color:white;
+
+.movementkeys div {
+    color: white;
     -webkit-text-stroke: 0.5px black;
     padding: 10px;
     border: solid 1px black;
@@ -223,6 +242,7 @@ a {
     align-items: center;
 
 }
+
 .exampleenemy {
     width: 15px;
     height: 15px;
@@ -230,19 +250,50 @@ a {
     border: solid 1px black;
 }
 
-.third{
+.third {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 10px;
     gap: 20px;
 }
-.third div{
+
+.third div {
     display: flex;
     justify-content: center;
-    align-items: center;
     font-size: 20px;
 }
 
-.third div a{
+.third div a {
+    color: white;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    font-family: PressStart2P;
+    background-color: black;
+    border: solid 3px rgb(0, 255, 229);
     color: rgb(0, 255, 229);
+    border-radius: 16px;
+    margin-bottom: 20px;
+}
+
+input::placeholder {
+    color: rgb(0, 255, 229);
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+.inputs{
+    display: grid;
+}
+.submit-button{
+    justify-self: center;
+    padding: 16px;
+    background-color: black;
+    color: rgb(0, 255, 229);
+    border-radius: 16px;
+    font-family: PressStart2P;
+    border: solid 3px rgb(0, 255, 229);
 }

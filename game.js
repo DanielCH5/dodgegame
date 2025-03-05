@@ -2,7 +2,9 @@
 
 const UI = {
     score: document.querySelector(".score1"),
-    lives: document.querySelector("#lives"),
+    heart1: document.querySelector("#heart1"),
+    heart2: document.querySelector("#heart2"),
+    heart3: document.querySelector("#heart3"),
     nameInput: document.querySelector('.submit-name-input'),
     submitButton: document.querySelector('.submit-button'),
 
@@ -48,7 +50,13 @@ const Game = {
     endScore: null,
     updateUI() {
         UI.score.textContent = this.highscore.toString();
-        UI.lives.textContent = this.lives.toString();
+        if(this.lives === 2){
+            UI.heart3.remove();
+        };
+
+        if(this.lives === 1){
+            UI.heart2.remove();
+        };
     },
 
     start() {

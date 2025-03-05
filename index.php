@@ -79,7 +79,11 @@ $page = $_GET['page'] ?? 'menu';
         <?php elseif ($page === 'game'): ?>
             <div id="scores">
                 <p class="score1"></p>
-                <p id="lives"></p>
+                <div id="lives">
+                    <img id="heart1" src="heart.svg" width="30px" alt="">
+                    <img id="heart2" src="heart.svg" width="30px" alt="">
+                    <img id="heart3" src="heart.svg" width="30px" alt="">
+                </div>
             </div>
             <div id="game-container">
 
@@ -187,10 +191,9 @@ $page = $_GET['page'] ?? 'menu';
                     <div>
                         <p>FINAL SCORE</p>
                         <p data-score1 class="score1"></p>
-                        <div>
+                        <div class="inputs">
                             <input type="text" placeholder="Enter your name here" class="submit-name-input">
-                            <button class="submit-button" onclick="submitScore()">Submit</button>
-                            <pre data-response-preview class="response-preview"></pre>
+                            <button class="submit-button" onclick="submitScore()">SUBMIT SCORE</button>
                         </div>
                     </div>
 
