@@ -1,12 +1,12 @@
 <?php
 // Set game id to easily change it both in the url to send highscores and showing the highscores
-$gameId = getenv('GAME_ID') ?: 63;
+// $gameId = getenv('GAME_ID') ?: gameid;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
 
     // Get from environment in production, but use a test token for development
-    $apiToken = getenv('API_TOKEN') ?: '27|SmleWwD2EOu903blOpkE5or2LO2U5QmJ3oedqjz24a8425d2';
+    $apiToken = getenv('API_TOKEN') ?: //'token';
 
     $url = "https://highscores.martindilling.com/api/v1/games/{$gameId}/highscores";
     $data = [

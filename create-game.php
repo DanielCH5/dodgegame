@@ -4,7 +4,7 @@ require_once __DIR__ . '/api.php';
 
 $url = 'https://highscores.martindilling.com/api/v1/games';
 $payload = [
-    'title' => 'Dodge test',
+    'title' => 'Dodge Game',
 ];
 $response = apiPost($url, $payload);
 
