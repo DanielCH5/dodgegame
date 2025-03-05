@@ -66,7 +66,6 @@ const Game = {
                 this.score = setInterval(() => {
                     this.highscore += 500;
                     this.updateUI();
-                    
                 }, 500);
             }, 2000);
         }
@@ -210,9 +209,6 @@ class Enemy {
                 enemy.increaseSpeed();
             });
         };
-
-        
-        
 
         this.updatePosition();
     }
