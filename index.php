@@ -199,7 +199,7 @@ $page = $_GET['page'] ?? 'menu';
 
                     <div>
                         <iframe
-                            src="https://highscores.martindilling.com/games/63/embed?fontSize=80&bgColor=111827&textColor=59cf8f&borderColor=3f485b"
+                            src="https://highscores.martindilling.com/games/63/embed?fontSize=80&bgColor=111827&textColor=00ffe5&borderColor=00ffe5"
                             title="Highscore table for Dodge test" width="100%" height="100%"></iframe>
                     </div>
 
