@@ -23,7 +23,7 @@ function submitScore() {
             if (!response.ok) throw new Error('Failed to submit score');
             return response.json();
         })
-        .then(() => (window.location.href = '/?page=menu'))
+        .then(() => (window.location.href = '/?page=highscores'))
         .catch((error) => {
             console.error(error);
         });

@@ -65,6 +65,28 @@ a {
     grid-template-columns: 1fr 1fr;
     gap: 30px;
 }
+#highscores {
+    background-color: black;
+    width: 800px;
+    height: 400px;
+    display: grid;
+    font-family: PressStart2P;
+    border: solid 3px rgb(0, 255, 229);
+    border-radius: 30px;
+    padding: 30px;
+    color: rgb(0, 255, 229);
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.highscore-grid {
+    display: grid;
+    text-align: center;
+}
+.highscore-grid a{
+    font-size: 20px;
+    color: rgb(0, 255, 229);
+}
 
 .gameover-grid div{
     text-align: center;

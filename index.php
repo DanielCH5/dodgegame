@@ -72,7 +72,7 @@ $page = $_GET['page'] ?? 'menu';
                     <a href="/?page=game" id="start">START</a>
                     <div id="settings">
                         <a href="?page=guide">GUIDE</a>
-                        <a href="">SCORES</a>
+                        <a href="?page=highscores">SCORES</a>
                     </div>
                 </div>
             </div>
@@ -209,6 +209,21 @@ $page = $_GET['page'] ?? 'menu';
 
                 </div>
             </div>
+
+            <?php elseif ($page === 'highscores'): ?>
+                <div id="highscores">
+                    <div class="highscore-grid">
+                        <h2>HIGHSCORES</h2>
+                        <a href="?page=menu">
+                            BACK
+                        </a>
+                    </div>
+                    <div class="highscore-grid">
+                    <iframe
+                            src="https://highscores.martindilling.com/games/63/embed?bgColor=111827&textColor=59cf8f&borderColor=3f485b"
+                            title="Highscore table for Dodge test" width="100%" height="100%"></iframe>
+                    </div>
+                </div>
         <?php endif; ?>
 
     </div>
