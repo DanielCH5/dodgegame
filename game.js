@@ -66,6 +66,7 @@ const Game = {
                 this.score = setInterval(() => {
                     this.highscore += 500;
                     this.updateUI();
+                    
                 }, 500);
             }, 2000);
         }
@@ -131,13 +132,98 @@ class Enemy {
         this.positionY = this.getRandomInt(Game.top, Game.bottom);
 
         this.movement = {
-            x: spawnLeft ? this.getRandomInt(3, 10) : -this.getRandomInt(3, 10), // Move right if left spawn, left if right spawn
+            x: spawnLeft ? 3 : -3, // Move right if left spawn, left if right spawn
             y: this.calculateMovementY()
         };
+        if(Game.highscore >= 2500){
+            enemies.forEach((enemy) => {
+                enemy.increaseSpeed();
+            });
+        };
+        if(Game.highscore >= 5000){
+            enemies.forEach((enemy) => {
+                enemy.increaseSpeed();
+            });
+        };
+        if(Game.highscore >= 7500){
+            enemies.forEach((enemy) => {
+                enemy.increaseSpeed();
+            });
+        };
+        if(Game.highscore >= 10000){
+            enemies.forEach((enemy) => {
+                enemy.increaseSpeed();
+            });
+        };
+        if(Game.highscore >= 12500){
+            enemies.forEach((enemy) => {
+                enemy.increaseSpeed();
+            });
+        };
+        if(Game.highscore >= 15000){
+            enemies.forEach((enemy) => {
+                enemy.increaseSpeed();
+            });
+        };
+        if(Game.highscore >= 17500){
+            enemies.forEach((enemy) => {
+                enemy.increaseSpeed();
+            });
+        };
+        if(Game.highscore >= 20000){
+            enemies.forEach((enemy) => {
+                enemy.increaseSpeed();
+            });
+        };
+        if(Game.highscore >= 25000){
+            enemies.forEach((enemy) => {
+                enemy.increaseSpeed();
+            });
+        };
+        if(Game.highscore >= 30000){
+            enemies.forEach((enemy) => {
+                enemy.increaseSpeed();
+            });
+        };
+        if(Game.highscore >= 35000){
+            enemies.forEach((enemy) => {
+                enemy.increaseSpeed();
+            });
+        };
+        if(Game.highscore >= 35000){
+            enemies.forEach((enemy) => {
+                enemy.increaseSpeed();
+            });
+        };
+        if(Game.highscore >= 40000){
+            enemies.forEach((enemy) => {
+                enemy.increaseSpeed();
+            });
+        };
+        if(Game.highscore >= 45000){
+            enemies.forEach((enemy) => {
+                enemy.increaseSpeed();
+            });
+        };
+        if(Game.highscore >= 50000){
+            enemies.forEach((enemy) => {
+                enemy.increaseSpeed();
+            });
+        };
+
+        
+        
 
         this.updatePosition();
     }
-
+    increaseSpeed(){
+        if(this.movement.x > 0){
+            this.movement.x = this.movement.x + 0.4;
+        } else{
+            this.movement.x = this.movement.x - 0.4;
+        }
+        
+    }
     removeEnemy() {
         this.enemy.style.display = 'none';
         this.active = false; // Hide the enemy
