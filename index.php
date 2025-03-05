@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $data = json_decode(file_get_contents('php://input'), true);
 
     // Get from environment in production, but use a test token for development
-    $apiToken = getenv('API_TOKEN') ?: 'token';
+    $apiToken = getenv('API_TOKEN') ?: '29|';
 
     $url = "https://highscores.martindilling.com/api/v1/games/{$gameId}/highscores";
     $data = [
@@ -57,6 +57,7 @@ $page = $_GET['page'] ?? 'menu';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Dodge Game</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="shortcut icon" href="heart.svg" type="image/x-icon">
 
 </head>
 
