@@ -189,11 +189,6 @@ class Enemy {
                 enemy.increaseSpeed();
             });
         };
-        if(Game.highscore >= 35000){
-            enemies.forEach((enemy) => {
-                enemy.increaseSpeed();
-            });
-        };
         if(Game.highscore >= 40000){
             enemies.forEach((enemy) => {
                 enemy.increaseSpeed();
